@@ -10,7 +10,7 @@ namespace Kiosk
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new MajorsPage();
         }
 
         protected override void OnStart()

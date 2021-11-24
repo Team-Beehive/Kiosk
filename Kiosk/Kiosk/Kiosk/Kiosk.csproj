@@ -9,4 +9,10 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2244" />
     <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="MajorsPage.xaml.cs">
+      <DependentUpon>MajorsPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>
