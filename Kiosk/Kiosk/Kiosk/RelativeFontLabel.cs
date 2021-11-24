@@ -18,23 +18,33 @@ namespace Kiosk
      * https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/text/fonts#understand-named-font-sizes
      * https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/controls/common-properties#units-of-measurement
      * https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/text/label
+     * https://docs.microsoft.com/en-us/xamarin/android/app-fundamentals/resources-in-android/resources-for-varying-screens#concepts
      */
     class RFLabel : Label
     {
-        private double fontSizeRelative;
-        public double FontSizeRelative
+        private double dp;
+        public double DP
         {
-            get { return fontSizeRelative; }
+            get { return dp; }
             set
             {
                 SetFontSize(value);
-                fontSizeRelative = value;
+                dp = value;
             }
         }
-        void SetFontSize(double fontSizeRelative)
+        void SetFontSize(double dp)
         {
-            int dpi = DependencyService.Get<IDisplayInfo>().GetDisplayDpi();
-            FontSize = dpi * (fontSizeRelative / 200);
+            switch(Device.RuntimePlatform)
+            {
+                case Device.Android:
+                    int dpi = DependencyService.Get<IDisplayInfo>().GetDisplayDpi();
+                    FontSize = dp * dpi / 160;
+                    break;
+                default:
+                    FontSize = dp;
+                    break;
+            }
+            
         }
     }
 }

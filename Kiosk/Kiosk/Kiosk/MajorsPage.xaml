@@ -6,74 +6,80 @@
              xmlns:local="clr-namespace:Kiosk"
              mc:Ignorable="d"
              x:Class="Kiosk.MajorsPage">
-    <StackLayout>
-        <StackLayout VerticalOptions="FillAndExpand">
-            <RelativeLayout VerticalOptions="FillAndExpand">
-                <RelativeLayout.Resources>
-                    <Style TargetType="Button">
-                        <Setter Property="TextColor" Value="White"/>
-                        <Setter Property="BackgroundColor" Value="Transparent"/>
-                    </Style>
-                </RelativeLayout.Resources>
-                <CarouselView ItemsSource="{StaticResource Frogs}" x:Name="MajorsCarousel" 
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <!-- Based on the 12 column layout https://www.w3schools.com/css/css_rwd_grid.asp -->
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="8*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <RelativeLayout Grid.ColumnSpan="2">
+            <RelativeLayout.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="TextColor" Value="White"/>
+                    <Setter Property="BackgroundColor" Value="Transparent"/>
+                </Style>
+            </RelativeLayout.Resources>
+            <CarouselView
+                    ItemsSource="{StaticResource Frogs}" x:Name="MajorsCarousel" 
                               RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"
                               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0}"
                               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
                               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
-                    <CarouselView.ItemTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding Path=Source}" Aspect="AspectFill"/>
-                        </DataTemplate>
-                    </CarouselView.ItemTemplate>
-                </CarouselView>
-                <Button Text="&lt;" x:Name="L" Clicked="CarouselMove"
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding Path=Source}" Aspect="AspectFill"/>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <Button Text="&lt;" x:Name="L" Clicked="CarouselMove"
                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"
                               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.375}"
                               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.125}"
                               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.25}"/>
-                <Button Text="&gt;" x:Name="R" Grid.Column="3" Clicked="CarouselMove"
+            <Button Text="&gt;" x:Name="R" Grid.Column="3" Clicked="CarouselMove"
                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.875}"
                               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.375}"
                               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.125}"
                               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.25}"/>
-            </RelativeLayout>
-            <local:RFLabel FontSize="Title" HorizontalTextAlignment="Center">Software Engineering Technology</local:RFLabel>
-            <local:RFLabel FontSize="Subtitle" HorizontalTextAlignment="Center">- Bachelor and Associates Degrees -</local:RFLabel>
+        </RelativeLayout>
+        <StackLayout Grid.Row="1" Grid.ColumnSpan="2">
+            <local:RFLabel DP="12" HorizontalTextAlignment="Center" VerticalOptions="Center">Software Engineering Technology</local:RFLabel>
+            <local:RFLabel DP="10" HorizontalTextAlignment="Center">- Bachelor and Associates Degrees -</local:RFLabel>
         </StackLayout>
-        <Grid VerticalOptions="FillAndExpand">
-            <Grid.ColumnDefinitions>
-                <!-- Based on the 12 column layout https://www.w3schools.com/css/css_rwd_grid.asp -->
-                <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="8*"/>
-            </Grid.ColumnDefinitions>
-            <StackLayout BackgroundColor="#003767" Grid.Column="0" VerticalOptions="FillAndExpand">
-                    <StackLayout.Resources>
-                        <Style TargetType="local:RFLabel">
-                            <Setter Property="TextColor" Value="White"/>
-                        </Style>
-                    </StackLayout.Resources>
-                    <local:RFLabel FontSizeRelative="12" FontAttributes="Bold">
-                        Quick Facts
-                    </local:RFLabel>
-                    <local:RFLabel FontSizeRelative="10" FontAttributes="Bold">
-                        First Offered
-                    </local:RFLabel>
-                    <local:RFLabel FontSizeRelative="8">
-                        0000
-                    </local:RFLabel>
-                    <local:RFLabel FontSizeRelative="10" FontAttributes="Bold">
-                        Typical Employers
-                    </local:RFLabel>
-                    <local:RFLabel FontSizeRelative="8" Text="Company A&#x0a;Company B&#x0a;Company C&#x0a;Company D"/>
-                    <local:RFLabel FontSizeRelative="10" FontAttributes="Bold">
-                        Expected Credit Hours
-                    </local:RFLabel>
-                    <local:RFLabel FontSizeRelative="8">
-                        500 Credit Hours
-                    </local:RFLabel>
-                </StackLayout>
-                <local:RFLabel FontSizeRelative="8" Grid.Column="1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at velit ac dui dictum dignissim eu vitae purus. Donec nec magna in enim volutpat volutpat vel sed elit. Integer hendrerit luctus efficitur. Nullam vitae eros in dui viverra vulputate. Morbi lobortis semper ex in commodo. In aliquam nisi sit amet turpis congue, nec lobortis mauris placerat. Sed lacinia rhoncus aliquam. Sed nunc diam, imperdiet in efficitur non, condimentum bibendum elit. Sed pulvinar tempor augue nec lacinia. Nullam sit amet pharetra diam, vitae blandit dolor. Nulla id hendrerit leo. Maecenas interdum est id lorem egestas dictum.</local:RFLabel>
-            </Grid>
-    </StackLayout>
-    
+        
+
+        <StackLayout BackgroundColor="#003767" Grid.Row="2" Margin="0,5,0,0">
+            <StackLayout.Resources>
+                <Style TargetType="local:RFLabel">
+                    <Setter Property="TextColor" Value="White"/>
+                </Style>
+            </StackLayout.Resources>
+            <local:RFLabel DP="10" FontAttributes="Bold">
+                Quick Facts
+            </local:RFLabel>
+            <local:RFLabel DP="8" FontAttributes="Bold">
+                First Offered
+            </local:RFLabel>
+            <local:RFLabel DP="7">
+                0000
+            </local:RFLabel>
+            <local:RFLabel DP="8" FontAttributes="Bold">
+                Typical Employers
+            </local:RFLabel>
+            <local:RFLabel DP="7" Text="Company A&#x0a;Company B&#x0a;Company C&#x0a;Company D"/>
+            <local:RFLabel DP="8" FontAttributes="Bold">
+                Expected Credit Hours
+            </local:RFLabel>
+            <local:RFLabel DP="7">
+                500 Credit Hours
+            </local:RFLabel>
+        </StackLayout>
+        <local:RFLabel DP="8" Grid.Row="2" Grid.Column="1" Margin="0,5,0,0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at velit ac dui dictum dignissim eu vitae purus. Donec nec magna in enim volutpat volutpat vel sed elit. Integer hendrerit luctus efficitur. Nullam vitae eros in dui viverra vulputate. Morbi lobortis semper ex in commodo. In aliquam nisi sit amet turpis congue, nec lobortis mauris placerat. Sed lacinia rhoncus aliquam. Sed nunc diam, imperdiet in efficitur non, condimentum bibendum elit. Sed pulvinar tempor augue nec lacinia. Nullam sit amet pharetra diam, vitae blandit dolor. Nulla id hendrerit leo. Maecenas interdum est id lorem egestas dictum.</local:RFLabel>
+    </Grid>
+
 </ContentPage>
