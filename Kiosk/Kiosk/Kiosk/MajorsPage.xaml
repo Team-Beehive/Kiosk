@@ -7,40 +7,36 @@
              mc:Ignorable="d"
              x:Class="Kiosk.MajorsPage">
     <StackLayout>
-        <StackLayout VerticalOptions="Fill">
-                <RelativeLayout VerticalOptions="FillAndExpand">
-                    <RelativeLayout.Resources>
-                        <Style TargetType="Button">
-                            <Setter Property="TextColor" Value="White"/>
-                            <Setter Property="BackgroundColor" Value="Transparent"/>
-                        </Style>
-                    </RelativeLayout.Resources>
-                    <CarouselView ItemsSource="{StaticResource Frogs}" x:Name="MajorsCarousel" 
+        <StackLayout VerticalOptions="FillAndExpand">
+            <RelativeLayout VerticalOptions="FillAndExpand">
+                <RelativeLayout.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="TextColor" Value="White"/>
+                        <Setter Property="BackgroundColor" Value="Transparent"/>
+                    </Style>
+                </RelativeLayout.Resources>
+                <CarouselView ItemsSource="{StaticResource Frogs}" x:Name="MajorsCarousel" 
                               RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"
                               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0}"
                               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
                               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
-                        <CarouselView.ItemTemplate>
-                            <DataTemplate>
-                                <Image Source="{Binding Path=Source}" Aspect="AspectFill"/>
-                            </DataTemplate>
-                        </CarouselView.ItemTemplate>
-                    </CarouselView>
-                    <Button Text="&lt;" x:Name="L" Clicked="CarouselMove"
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=Source}" Aspect="AspectFill"/>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                <Button Text="&lt;" x:Name="L" Clicked="CarouselMove"
                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"
                               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.375}"
                               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.125}"
                               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.25}"/>
-                    <Button Text="&gt;" x:Name="R" Grid.Column="3" Clicked="CarouselMove"
+                <Button Text="&gt;" x:Name="R" Grid.Column="3" Clicked="CarouselMove"
                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.875}"
                               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.375}"
                               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.125}"
                               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.25}"/>
-                </RelativeLayout>
-
-
-                
-            
+            </RelativeLayout>
             <local:RFLabel FontSize="Title" HorizontalTextAlignment="Center">Software Engineering Technology</local:RFLabel>
             <local:RFLabel FontSize="Subtitle" HorizontalTextAlignment="Center">- Bachelor and Associates Degrees -</local:RFLabel>
         </StackLayout>
