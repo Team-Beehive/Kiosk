@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using Xamarin.Forms;
 
 namespace Kiosk
@@ -13,9 +14,17 @@ namespace Kiosk
     [DesignTimeVisible(false)]
     public partial class MajorsPage : ContentPage
     {
+        private Timer carouselTimer;
+
+        private const int timerInterval = 10000;
         public MajorsPage()
         {
             InitializeComponent();
+            carouselTimer = new Timer();
+            carouselTimer.Elapsed += CarouselMove;
+            carouselTimer.Interval = timerInterval; // in miliseconds
+            carouselTimer.Start();
+
         }
 
         // Reason for using this instead of using the built-in modulo
@@ -29,14 +38,21 @@ namespace Kiosk
 
         /*
          * CarouselMove
-         * Moves carousel based on the inputs of buttons with the carousel
+         * Moves carousel based on outside inputs
          */
         private void CarouselMove(object sender, EventArgs e)
         {
-            if (sender.Equals(R))
-                 MajorsCarousel.Position = Mod(MajorsCarousel.Position + 1, ((Images)MajorsCarousel.ItemsSource).Count);
-            else
-                MajorsCarousel.Position = Mod(MajorsCarousel.Position - 1, ((Images)MajorsCarousel.ItemsSource).Count);
+            MajorsCarousel.Position = sender.Equals(R) || sender.Equals(carouselTimer)
+                ? Mod(MajorsCarousel.Position + 1, ((Images)MajorsCarousel.ItemsSource).Count)
+                : Mod(MajorsCarousel.Position - 1, ((Images)MajorsCarousel.ItemsSource).Count);
+
+
+            // These lines reset the timer so that it doesn't switch right after the user does
+            if (!sender.Equals(carouselTimer))
+            {
+                carouselTimer.Interval = int.MaxValue;
+                carouselTimer.Interval = timerInterval;
+            }
         }
     }
 }
