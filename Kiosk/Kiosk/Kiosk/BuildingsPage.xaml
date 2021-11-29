@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Kiosk"
+             x:Class="Kiosk.BuildingsPage">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Image Source="placeholder.jpg" Aspect="AspectFill" Grid.ColumnSpan="5"/>
+        <Image Source="placeholder.jpg" Aspect="AspectFill" Grid.Row="1"/>
+        <Image Source="placeholder.jpg" Aspect="AspectFill" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"/>
+        <Image Source="placeholder.jpg" Aspect="AspectFill" Grid.Row="1" Grid.Column="4"/>
+        <local:RFLabel DP="12" HorizontalTextAlignment="Center" VerticalOptions="Center" Grid.Row="2" Grid.ColumnSpan="5">Purvine Hall</local:RFLabel>
+        
+        <StackLayout Grid.Row="3" Grid.ColumnSpan="2" BackgroundColor="#003767">
+            <StackLayout.Resources>
+                <Style TargetType="local:RFLabel">
+                    <Setter Property="TextColor" Value="White"/>
+                </Style>
+            </StackLayout.Resources>
+            <local:RFLabel DP="10" FontAttributes="Bold">
+                Quick Facts
+            </local:RFLabel>
+            <local:RFLabel DP="8" FontAttributes="Bold">
+                First Offered
+            </local:RFLabel>
+            <local:RFLabel DP="7">
+                0000
+            </local:RFLabel>
+            <local:RFLabel DP="8" FontAttributes="Bold">
+                Typical Employers
+            </local:RFLabel>
+            <!-- Multiline labels are a bit strange. Using '&#x0a;' makes it multiline like using \n
+                    Making it like the other labels leads to some strange tabbing -->
+            <local:RFLabel DP="7" Text="Company A&#x0a;Company B&#x0a;Company C&#x0a;Company D"/>
+            <local:RFLabel DP="8" FontAttributes="Bold">
+                Expected Credit Hours
+            </local:RFLabel>
+            <local:RFLabel DP="7">
+                500 Credit Hours
+            </local:RFLabel>
+        </StackLayout>
+        <local:RFLabel Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Text="Text"/>
+        <ScrollView Orientation="Horizontal" Grid.Row="4" Grid.ColumnSpan="5" >
+            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{StaticResource Buildings}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <local:RelativeImage Source="{Binding Path=Source}" WidthPercent="25"/>
+                            <local:RFLabel Text="{Binding Path=LabelText}" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

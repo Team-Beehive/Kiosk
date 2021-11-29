@@ -25,11 +25,11 @@
                 </Style>
             </RelativeLayout.Resources>
             <CarouselView
-                    ItemsSource="{StaticResource Frogs}" x:Name="MajorsCarousel" 
-                              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"
-                              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0}"
-                              RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
-                              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+                    ItemsSource="{StaticResource Frogs}" x:Name="MajorsCarousel"
+                                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"
+                                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0}"
+                                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
                         <Image Source="{Binding Path=Source}" Aspect="AspectFill"/>
@@ -38,22 +38,21 @@
             </CarouselView>
             <Button Text="&lt;" x:Name="L" Clicked="CarouselMove"
                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"
-                              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.375}"
-                              RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.125}"
-                              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.25}"/>
+                                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.375}"
+                                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.125}"
+                                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.25}"/>
             <Button Text="&gt;" x:Name="R" Grid.Column="3" Clicked="CarouselMove"
                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.875}"
-                              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.375}"
-                              RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.125}"
-                              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.25}"/>
+                                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.375}"
+                                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.125}"
+                                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.25}"/>
         </RelativeLayout>
         <StackLayout Grid.Row="1" Grid.ColumnSpan="2">
             <local:RFLabel DP="12" HorizontalTextAlignment="Center" VerticalOptions="Center">Software Engineering Technology</local:RFLabel>
             <local:RFLabel DP="10" HorizontalTextAlignment="Center">- Bachelor and Associates Degrees -</local:RFLabel>
         </StackLayout>
-        
 
-        <StackLayout BackgroundColor="#003767" Grid.Row="2" Margin="0,5,0,0">
+        <StackLayout BackgroundColor="#003767" Grid.Row="2" Margin="0,5,0,0" Padding="5,1">
             <StackLayout.Resources>
                 <Style TargetType="local:RFLabel">
                     <Setter Property="TextColor" Value="White"/>
@@ -71,6 +70,8 @@
             <local:RFLabel DP="8" FontAttributes="Bold">
                 Typical Employers
             </local:RFLabel>
+            <!-- Multiline labels are a bit strange. Using '&#x0a;' makes it multiline like using \n
+                    Making it like the other labels leads to some strange tabbing -->
             <local:RFLabel DP="7" Text="Company A&#x0a;Company B&#x0a;Company C&#x0a;Company D"/>
             <local:RFLabel DP="8" FontAttributes="Bold">
                 Expected Credit Hours
@@ -81,5 +82,4 @@
         </StackLayout>
         <local:RFLabel DP="8" Grid.Row="2" Grid.Column="1" Margin="0,5,0,0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at velit ac dui dictum dignissim eu vitae purus. Donec nec magna in enim volutpat volutpat vel sed elit. Integer hendrerit luctus efficitur. Nullam vitae eros in dui viverra vulputate. Morbi lobortis semper ex in commodo. In aliquam nisi sit amet turpis congue, nec lobortis mauris placerat. Sed lacinia rhoncus aliquam. Sed nunc diam, imperdiet in efficitur non, condimentum bibendum elit. Sed pulvinar tempor augue nec lacinia. Nullam sit amet pharetra diam, vitae blandit dolor. Nulla id hendrerit leo. Maecenas interdum est id lorem egestas dictum.</local:RFLabel>
     </Grid>
-
 </ContentPage>

@@ -25,23 +25,24 @@ namespace Kiosk
         private double dp;
         public double DP
         {
-            get { return dp; }
+            get => dp;
             set
             {
                 SetFontSize(value);
                 dp = value;
             }
         }
-        void SetFontSize(double dp)
+
+        private void SetFontSize(double dp)
         {
-            switch(Device.RuntimePlatform)
+            switch (Device.RuntimePlatform)
             {
                 case Device.Android:
                     int dpi = DependencyService.Get<IDisplayInfo>().GetDisplayDpi();
                     FontSize = dp * dpi / 160;
                     break;
                 default:
-                    FontSize = dp;
+                    FontSize = dp * 2;
                     break;
             }
             

@@ -8,9 +8,18 @@
              x:Class="Kiosk.App">
     <Application.Resources>
         <local:Images x:Key="Frogs">
-            <Image Source="https://www.nhm.ac.uk/content/dam/nhmwww/discover/frog-eyes-evolution/frog-eyes-chubby-frog-flower-full-width.jpg"/>
-            <Image Source="https://static01.nyt.com/images/2019/04/02/science/28SCI-ZIMMER1/28SCI-ZIMMER1-videoSixteenByNineJumbo1600.jpg"/>
-            <Image Source="https://cdn.britannica.com/84/206384-050-00698723/Javan-gliding-tree-frog.jpg"/>
+            <Image Source="frog1.jpg"/>
+            <Image Source="frog2.jpg"/>
+            <Image Source="frog3.jpg"/>
         </local:Images>
+
+        <local:LabeledImages x:Key="Buildings">
+            <local:LabeledImage Source="frog1.jpg" LabelText="Frog 1"/>
+            <local:LabeledImage Source="frog2.jpg" LabelText="Frog 2"/>
+            <local:LabeledImage Source="frog3.jpg" LabelText="Frog 3"/>
+            <local:LabeledImage Source="frog1.jpg" LabelText="Frog 4"/>
+            <local:LabeledImage Source="frog2.jpg" LabelText="Frog 5"/>
+            <local:LabeledImage Source="frog3.jpg" LabelText="Frog 6"/>
+        </local:LabeledImages>
     </Application.Resources>
 </Application>
