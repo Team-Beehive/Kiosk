@@ -39,7 +39,7 @@ namespace Kiosk
             {
                 case Device.Android:
                     int dpi = DependencyService.Get<IDisplayInfo>().GetDisplayDpi();
-                    FontSize = dp * dpi / 160;
+                    FontSize = dp * (dpi / 160);
                     break;
                 default:
                     FontSize = dp * 2;
