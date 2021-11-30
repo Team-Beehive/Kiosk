@@ -21,5 +21,9 @@
             <local:LabeledImage Source="frog2.jpg" LabelText="Frog 5"/>
             <local:LabeledImage Source="frog3.jpg" LabelText="Frog 6"/>
         </local:LabeledImages>
+
+        <local:Images x:Key="Banner">
+            <Image Source="temp_math.jpg"/>
+        </local:Images>
     </Application.Resources>
 </Application>

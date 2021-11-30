@@ -81,6 +81,7 @@ namespace Kiosk
             else
             {
                 //To ensure only one category is open at any given time close everything before opening the desired selection
+                //TODO: close last pressed, if last == current set to null, if last != current set last = current
                 RemoveAll();
                 addGrid.Children.Add(grid);
             }
@@ -117,6 +118,7 @@ namespace Kiosk
         }
 
         //Removes all lists of programs
+        //TODO: simplify this process by having a last opend variable, when the next button is pressed close the last pressed
         private void RemoveAll()
         {
             //If the count is greater than one then at means it is open and can be removed

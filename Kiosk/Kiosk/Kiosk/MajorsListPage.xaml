@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <!--Author: Destin Dahlgren-->
 <!--Temp Image Link: https://mobizent.net/wp-content/uploads/2018/04/Home-Four-Banner-Background-Image.png-->
+<!--Temp Image Link: https://c.pxhere.com/photos/6f/90/frog_pond_water_green_lily_pond_lily_pad_nature_high-596848.jpg!d-->
     <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Kiosk.MajorsListPage"
                  NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
-        <Grid BackgroundColor="Black">
+        <Grid BackgroundColor="#003767">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -21,18 +22,41 @@
 
             <!--Categories-->
 
+            <!--
             <StackLayout Grid.Row="1" x:Name="TechCat" BackgroundColor="Gray">
                 <Button Text="Technology" ClassId="TECH" Clicked="ButtonPressCategory" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" TextColor="White"/>
                 
             </StackLayout>
-
+            -->
+            <!--Using two different grids in these categories may not be the most efficent way to hanlde this-->
+            <StackLayout Grid.Row="1" x:Name="TechCat" BackgroundColor="Gray">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Aspect="AspectFill" Source="temp_tech"/>
+                    <Button Grid.Row="0" Text="Technology" ClassId="TECH" Clicked="ButtonPressCategory" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" TextColor="White"/>
+                </Grid>
+            </StackLayout>
 
             <StackLayout Background="gray" x:Name="BioCat" Grid.Row="2">
-                <Button Text="Bio" ClassId="BIO" Clicked="ButtonPressCategory" CornerRadius="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" TextColor="White" BorderColor="Transparent"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Aspect="AspectFill" Source="temp_bio"/>
+                    <Button Grid.Row="0" Text="Bio" ClassId="BIO" Clicked="ButtonPressCategory" CornerRadius="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" TextColor="White" BorderColor="Transparent"/>
+                </Grid>
             </StackLayout>
 
             <StackLayout Background="gray" x:Name="MathCat" Grid.Row="3">
-                <Button Text="Math" ClassId="MATH" Clicked="ButtonPressCategory" CornerRadius="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" TextColor="White" BorderColor="Transparent"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Aspect="AspectFill" Source="temp_math.jpg"/>
+                    <Button Grid.Row="0" Text="Math" ClassId="MATH" Clicked="ButtonPressCategory" CornerRadius="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" TextColor="White" BorderColor="Transparent"/>
+                </Grid>
             </StackLayout>
 
         </Grid>
