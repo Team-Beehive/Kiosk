@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
         <RelativeLayout Grid.ColumnSpan="2">
@@ -48,38 +48,38 @@
                                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.25}"/>
         </RelativeLayout>
         <StackLayout Grid.Row="1" Grid.ColumnSpan="2">
-            <local:RFLabel DP="12" HorizontalTextAlignment="Center" VerticalOptions="Center">Software Engineering Technology</local:RFLabel>
-            <local:RFLabel DP="10" HorizontalTextAlignment="Center">- Bachelor and Associates Degrees -</local:RFLabel>
+            <Label FontSize="24" HorizontalTextAlignment="Center" VerticalOptions="Center">Software Engineering Technology</Label>
+            <Label FontSize="20" HorizontalTextAlignment="Center">- Bachelor and Associates Degrees -</Label>
         </StackLayout>
 
-        <StackLayout BackgroundColor="#003767" Grid.Row="2" Margin="0,5,0,0" Padding="5,1">
+        <StackLayout BackgroundColor="#003767" Grid.Row="2" Padding="5,1">
             <StackLayout.Resources>
-                <Style TargetType="local:RFLabel">
+                <Style TargetType="Label">
                     <Setter Property="TextColor" Value="White"/>
                 </Style>
             </StackLayout.Resources>
-            <local:RFLabel DP="10" FontAttributes="Bold">
+            <Label FontSize="20" FontAttributes="Bold">
                 Quick Facts
-            </local:RFLabel>
-            <local:RFLabel DP="8" FontAttributes="Bold">
+            </Label>
+            <Label FontSize="16" FontAttributes="Bold">
                 First Offered
-            </local:RFLabel>
-            <local:RFLabel DP="7">
+            </Label>
+            <Label FontSize="14">
                 0000
-            </local:RFLabel>
-            <local:RFLabel DP="8" FontAttributes="Bold">
+            </Label>
+            <Label FontSize="16" FontAttributes="Bold">
                 Typical Employers
-            </local:RFLabel>
+            </Label>
             <!-- Multiline labels are a bit strange. Using '&#x0a;' makes it multiline like using \n
                     Making it like the other labels leads to some strange tabbing -->
-            <local:RFLabel DP="7" Text="Company A&#x0a;Company B&#x0a;Company C&#x0a;Company D"/>
-            <local:RFLabel DP="8" FontAttributes="Bold">
+            <Label FontSize="14" Text="Company A&#x0a;Company B&#x0a;Company C&#x0a;Company D"/>
+            <Label FontSize="16" FontAttributes="Bold">
                 Expected Credit Hours
-            </local:RFLabel>
-            <local:RFLabel DP="7">
+            </Label>
+            <Label FontSize="14">
                 500 Credit Hours
-            </local:RFLabel>
+            </Label>
         </StackLayout>
-        <local:RFLabel DP="8" Grid.Row="2" Grid.Column="1" Margin="0,5,0,0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at velit ac dui dictum dignissim eu vitae purus. Donec nec magna in enim volutpat volutpat vel sed elit. Integer hendrerit luctus efficitur. Nullam vitae eros in dui viverra vulputate. Morbi lobortis semper ex in commodo. In aliquam nisi sit amet turpis congue, nec lobortis mauris placerat. Sed lacinia rhoncus aliquam. Sed nunc diam, imperdiet in efficitur non, condimentum bibendum elit. Sed pulvinar tempor augue nec lacinia. Nullam sit amet pharetra diam, vitae blandit dolor. Nulla id hendrerit leo. Maecenas interdum est id lorem egestas dictum.</local:RFLabel>
+        <Label FontSize="16" Grid.Row="2" Grid.Column="1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at velit ac dui dictum dignissim eu vitae purus. Donec nec magna in enim volutpat volutpat vel sed elit. Integer hendrerit luctus efficitur. Nullam vitae eros in dui viverra vulputate. Morbi lobortis semper ex in commodo. In aliquam nisi sit amet turpis congue, nec lobortis mauris placerat. Sed lacinia rhoncus aliquam. Sed nunc diam, imperdiet in efficitur non, condimentum bibendum elit. Sed pulvinar tempor augue nec lacinia. Nullam sit amet pharetra diam, vitae blandit dolor. Nulla id hendrerit leo. Maecenas interdum est id lorem egestas dictum.</Label>
     </Grid>
 </ContentPage>
