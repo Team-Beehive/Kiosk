@@ -11,6 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="MajorsData.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MajorsData.resx</DependentUpon>
+    </Compile>
     <Compile Update="MajorsPage.xaml.cs">
       <DependentUpon>MajorsPage.xaml</DependentUpon>
     </Compile>
@@ -20,6 +25,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="MajorsData.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MajorsData.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Navigation.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

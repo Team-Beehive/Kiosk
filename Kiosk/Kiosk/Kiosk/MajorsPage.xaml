@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:resource="clr-namespace:Kiosk.Resources"
              xmlns:local="clr-namespace:Kiosk"
              mc:Ignorable="d"
              x:Class="Kiosk.MajorsPage">
@@ -48,8 +49,8 @@
                                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.25}"/>
         </RelativeLayout>
         <StackLayout Grid.Row="1" Grid.ColumnSpan="2">
-            <Label FontSize="24" HorizontalTextAlignment="Center" VerticalOptions="Center">Software Engineering Technology</Label>
-            <Label FontSize="20" HorizontalTextAlignment="Center">- Bachelor and Associates Degrees -</Label>
+            <Label FontSize="24" HorizontalTextAlignment="Center" VerticalOptions="Center" Text="{Static local:MajorsData.DegreeName}"/>
+            <Label FontSize="20" HorizontalTextAlignment="Center" Text="{Static local:MajorsData.DegreesOffered}"></Label>
         </StackLayout>
 
         <StackLayout BackgroundColor="#003767" Grid.Row="2" Padding="5,1">
@@ -64,22 +65,18 @@
             <Label FontSize="16" FontAttributes="Bold">
                 First Offered
             </Label>
-            <Label FontSize="14">
-                0000
-            </Label>
+            <Label FontSize="14" Text="{Static local:MajorsData.YearOffered}"/>
             <Label FontSize="16" FontAttributes="Bold">
-                Typical Employers
+                Graduates have worked for:
             </Label>
             <!-- Multiline labels are a bit strange. Using '&#x0a;' makes it multiline like using \n
                     Making it like the other labels leads to some strange tabbing -->
-            <Label FontSize="14" Text="Company A&#x0a;Company B&#x0a;Company C&#x0a;Company D"/>
+            <Label FontSize="14" Text="{Static local:MajorsData.Employers}"/>
             <Label FontSize="16" FontAttributes="Bold">
                 Expected Credit Hours
             </Label>
-            <Label FontSize="14">
-                500 Credit Hours
-            </Label>
+            <Label FontSize="14" Text="{Static local:MajorsData.CreditHours}"/>
         </StackLayout>
-        <Label FontSize="16" Grid.Row="2" Grid.Column="1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at velit ac dui dictum dignissim eu vitae purus. Donec nec magna in enim volutpat volutpat vel sed elit. Integer hendrerit luctus efficitur. Nullam vitae eros in dui viverra vulputate. Morbi lobortis semper ex in commodo. In aliquam nisi sit amet turpis congue, nec lobortis mauris placerat. Sed lacinia rhoncus aliquam. Sed nunc diam, imperdiet in efficitur non, condimentum bibendum elit. Sed pulvinar tempor augue nec lacinia. Nullam sit amet pharetra diam, vitae blandit dolor. Nulla id hendrerit leo. Maecenas interdum est id lorem egestas dictum.</Label>
+        <Label FontSize="16" Grid.Row="2" Grid.Column="1" Text="{Static local:MajorsData.About}"/>
     </Grid>
 </ContentPage>

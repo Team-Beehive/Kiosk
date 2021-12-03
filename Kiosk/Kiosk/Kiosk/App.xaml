@@ -7,23 +7,30 @@
              mc:Ignorable="d"
              x:Class="Kiosk.App">
     <Application.Resources>
-        <local:Images x:Key="Frogs">
+        <local:ImageCollection x:Key="Frogs">
             <Image Source="frog1.jpg"/>
             <Image Source="frog2.jpg"/>
             <Image Source="frog3.jpg"/>
-        </local:Images>
+        </local:ImageCollection>
 
-        <local:LabeledImages x:Key="Buildings">
+        <local:LabeledImageCollection x:Key="Buildings">
             <local:LabeledImage Source="frog1.jpg" LabelText="Frog 1"/>
             <local:LabeledImage Source="frog2.jpg" LabelText="Frog 2"/>
             <local:LabeledImage Source="frog3.jpg" LabelText="Frog 3"/>
             <local:LabeledImage Source="frog1.jpg" LabelText="Frog 4"/>
             <local:LabeledImage Source="frog2.jpg" LabelText="Frog 5"/>
             <local:LabeledImage Source="frog3.jpg" LabelText="Frog 6"/>
-        </local:LabeledImages>
+        </local:LabeledImageCollection>
 
-        <local:Images x:Key="Banner">
+        <local:ImageCollection x:Key="Banner">
             <Image Source="temp_math.jpg"/>
-        </local:Images>
+        </local:ImageCollection>
+
+        <ResourceDictionary x:Key="MajorsData">
+            <local:TextBody x:Key="DegreeName" Text="Software Engineering Technology"/>
+            <local:TextBody x:Key="TypesOffered" Text="- Bachelor and Associates Degrees -"/>
+            
+        </ResourceDictionary>
+        
     </Application.Resources>
 </Application>

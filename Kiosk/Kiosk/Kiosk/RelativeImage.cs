@@ -8,27 +8,27 @@ namespace Kiosk
 
     public class RelativeImage : Image
     {
-        private float heightPercent;
+        private float _heightPercent;
 
         public float HeightPercent
         {
-            get => heightPercent;
+            get => _heightPercent;
             set
             {
                 SetHeight(value);
-                heightPercent = value;
+                _heightPercent = value;
             }
         }
 
 
-        private float widthPercent;
+        private float _widthPercent;
         public float WidthPercent
         {
-            get => widthPercent;
+            get => _widthPercent;
             set
             {
                 SetWidth(value);
-                widthPercent = value;
+                _widthPercent = value;
             }
         }
 
