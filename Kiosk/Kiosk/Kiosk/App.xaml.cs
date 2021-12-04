@@ -10,8 +10,9 @@ namespace Kiosk
         public App()
         {
             InitializeComponent();
-
+            //OnStart();
             //MainPage = new BuildingsPage();
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", new Uri("./oit-kiosk-firebase-adminsdk-u24sq-8f7958c50f.json", UriKind.Relative).ToString());
             MainPage = new NavigationPage(new MajorsListPage());
         }
 
@@ -19,7 +20,7 @@ namespace Kiosk
         {
             // Handle when your app starts
             //This line should create the environment variable with a relative path to the json file
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", "../oit-kiosk-firebase-adminsdk-u24sq-8f7958c50f.json");
+            
         }
 
         protected override void OnSleep()
