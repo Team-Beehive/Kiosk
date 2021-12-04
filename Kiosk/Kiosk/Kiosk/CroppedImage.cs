@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using Xamarin.Forms;
 
@@ -9,35 +10,44 @@ namespace Kiosk
     {
         public CroppedImage()
         {
-            internalImage = new Image();
+            internalImage = new Image 
+            {
+                
+            };
+            VerticalOptions = LayoutOptions.End;
+            HorizontalOptions = LayoutOptions.End;
             ShapeRatio = S.Square;
             Orientation = O.Horizontal;
             ImageConstraintX = 0;
             ImageConstraintY = 0;
             ImageScaleX = 1;
             ImageScaleY = 1;
-            this.Children.Add(internalImage,
-            // XConstraint
-            Constraint.RelativeToParent((parent) =>
-            {
-                return parent.Width * ImageConstraintX;
-            }),
-            //YConstraint
-            Constraint.RelativeToParent((parent) =>
-            {
-                return parent.Height * ImageConstraintY;
-            }),
-            // XScale
-            Constraint.RelativeToParent((parent) =>
-            {
-                return parent.Width * ImageScaleX;
-            }),
-            // YScale
-            Constraint.RelativeToParent((parent) =>
-            {
-                return parent.Height * ImageScaleY;
-            }));
+
+            Children.Add(internalImage,
+                // These constraints are in the correct but arbitrary order
+                // XConstraint
+                Constraint.RelativeToParent((parent) =>
+                {
+                    return parent.Width * ImageConstraintX;
+                }),
+                //YConstraint
+                Constraint.RelativeToParent((parent) =>
+                {
+                    return parent.Height * ImageConstraintY;
+                }),
+                // XScale
+                Constraint.RelativeToParent((parent) =>
+                {
+                    return parent.Width * ImageScaleX;
+                }),
+                // YScale
+                Constraint.RelativeToParent((parent) =>
+                {
+                    return parent.Height * ImageScaleY;
+                }));
         }
+
+        
 
         public enum S
         {
@@ -46,23 +56,25 @@ namespace Kiosk
             SixteenByNine
         }
 
-        public enum O
-        {
-            Vertical,
-            Horizontal
-        }
-
-        private static double[] doubleRatio =
+        private static readonly double[] doubleRatio =
         {
             1.0,
             1.33,
             1.77
         };
 
+        public enum O
+        {
+            Vertical,
+            Horizontal
+        }
+
+        
+
         public O Orientation
         {
             get => orientation;
-            set 
+            set
             {
                 orientation = value;
                 SetShapeRatio(shapeRatio);
@@ -74,30 +86,53 @@ namespace Kiosk
 
         private S shapeRatio;
         public S ShapeRatio
-        { 
+        {
             get => shapeRatio;
-            set 
+            set
             {
                 shapeRatio = value;
                 SetShapeRatio(value);
             }
         }
 
-        public double ImageConstraintX { get => imageX; set => imageX = value; }
-        public double ImageConstraintY { get => imageY; set => imageY = value; }
-        public double ImageScaleX { get => scaleX; set => scaleX = value; }
-        public double ImageScaleY { get => scaleY; set => scaleY = value; }
+        
 
         private Image internalImage;
-        public ImageSource Source {
+        public ImageSource Source
+        {
             get => internalImage.Source;
-            set => internalImage.Source = value; 
+            set => internalImage.Source = value;
         }
 
         private double imageX;
         private double imageY;
         private double scaleX;
         private double scaleY;
+
+        public double ImageConstraintX 
+        { 
+            get => imageX;
+            set
+            {
+                imageX = value;
+                ConstraintChanged("ImageX");
+            };
+        }
+
+        private void ConstraintChanged(string Constraint)
+        {
+            
+            switch (Constraint)
+            {
+                case "ImageX":
+                    this.Get(;
+                    break;
+            }
+        }
+
+        public double ImageConstraintY { get => imageY; set => imageY = value; }
+        public double ImageScaleX { get => scaleX; set => scaleX = value; }
+        public double ImageScaleY { get => scaleY; set => scaleY = value; }
 
         private void SetShapeRatio(S ratio)
         {
@@ -106,10 +141,13 @@ namespace Kiosk
             switch (orientation)
             {
                 case O.Vertical:
-                    WidthRequest = Height * ratioInDouble;
+                    HeightRequest = Width * ratioInDouble;
                     break;
                 case O.Horizontal:
-                    HeightRequest = Width * ratioInDouble;
+                    HeightRequest = Width / ratioInDouble;
+                    break;
+                default:
+                    Debug.WriteLine("This isn't supposed to happen");
                     break;
             }
         }
