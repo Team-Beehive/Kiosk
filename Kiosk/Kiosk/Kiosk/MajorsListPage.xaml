@@ -7,7 +7,7 @@
              x:Class="Kiosk.MajorsListPage"
                  NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
-        <Grid BackgroundColor="#003767">
+        <Grid x:Name="MajorsList" BackgroundColor="#003767">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>

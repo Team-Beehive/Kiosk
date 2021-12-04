@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Google.Cloud.Firestore;
 
 namespace Kiosk
 {
@@ -17,6 +18,8 @@ namespace Kiosk
         protected override void OnStart()
         {
             // Handle when your app starts
+            //This line should create the environment variable with a relative path to the json file
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", "../oit-kiosk-firebase-adminsdk-u24sq-8f7958c50f.json");
         }
 
         protected override void OnSleep()

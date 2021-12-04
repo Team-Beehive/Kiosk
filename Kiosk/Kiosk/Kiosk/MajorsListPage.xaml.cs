@@ -4,9 +4,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Google.Cloud.Firestore;
+
 
 namespace Kiosk
 {
@@ -19,10 +20,53 @@ namespace Kiosk
         List<string> BioList = new List<string> { "Dental", "Echocardiography", "Environmental" };
         List<string> MathList = new List<string> { "Accounting", "Applied Mathmatics"};
         List<string> Default = new List<string> { };
-
+        FirestoreDb db = FirestoreDb.Create("oit-kiosk");
+        
         public MajorsListPage()
         {
             InitializeComponent();
+            CreateCategoryListAsync();
+        }
+
+        private async Task CreateCategoryListAsync()
+        {
+            //Get all the pages from database, not ideal but functional
+            CollectionReference usersRef = db.Collection("pages");
+            QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
+            foreach (DocumentSnapshot document in snapshot.Documents)
+            {
+                //Find the Majors document
+                if(document.Id == "Majors")
+                {
+                    List<Dictionary<string, string>> categoryList = document.GetValue<List<Dictionary<string, string>>>("Categories");
+                    int currentGridRow = 1;
+                    foreach(Dictionary<string, string> category in categoryList)
+                    {
+                        StackLayout stackLayout = new StackLayout();
+                        Grid grid = new Grid();
+                        grid.RowDefinitions[0].Height = new GridLength(60);
+                        //Insert image code here, Not yet implemented
+                        
+                        //Create the button for the drop down
+                        Button button = new Button();
+                        button.Text = category["categoryTitle"];
+                        //Add the button event
+                        button.Clicked += ButtonPressCategory;
+
+                        //Place image in the grid
+                        //grid.Children.Add(image);
+
+                        //Place button in the grid
+                        grid.Children.Add(button);
+
+                        //Place the grid in the stacklayout
+                        stackLayout.Children.Add(grid);
+
+                        //Place the stacklayout into the page's grid
+                        //MajorsList.Children.Add(stackLayout);
+                    }
+                }
+            }
         }
 
         //Button press function to make sure that the button is working as expected or a place holder
@@ -44,7 +88,7 @@ namespace Kiosk
         {
             
             Button btn = (Button)sender;
-            string cat = btn.ClassId;
+            string cat = btn.Text;
             List<string> catList = Default;
             StackLayout addGrid = default;
             Grid grid;
