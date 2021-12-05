@@ -31,25 +31,22 @@ namespace KioskDatabaseFramework
             db = FirestoreDb.Create(project);
         }
 
-        private static async Task <LinkedList<DocumentSnapshot>> db_StoreMajorDataMemory()
+        private static async Task<LinkedList<DocumentSnapshot>> GetMajorData()
         {
-            InitializeProject();
-            CollectionReference userRef = db.Collection("pages").Document("Majors").Collection("Degrees");
-            QuerySnapshot snapshot = await userRef.GetSnapshotAsync();
-
-            LinkedList<DocumentSnapshot> tempDocs = new LinkedList<DocumentSnapshot>();
+            CollectionReference collection = db.Collection("pages").Document("Majors").Collection("Degrees");
+            QuerySnapshot snapshot = await collection.GetSnapshotAsync();
+            LinkedList<DocumentSnapshot> documentSnapshots = new LinkedList<DocumentSnapshot>();
             foreach (DocumentSnapshot document in snapshot.Documents)
-                tempDocs.AddLast(document);
+            {
+                documentSnapshots.AddLast(document);
+            }
 
-            return tempDocs;
+            return documentSnapshots;
         }
 
-        public LinkedList<DocumentSnapshot> GetMajorData()
+        public string DataToText(MajorData majorData)
         {
-            Task<LinkedList<DocumentSnapshot>> task = db_StoreMajorDataMemory();
-            Task<LinkedList<DocumentSnapshot>>.Run(() => task);
-            LinkedList<DocumentSnapshot> documentSnapshots = task.Result;
-            return documentSnapshots;
+            return majorData.MajorName + majorData.type + majorData.Classes + majorData.Professors + majorData.campuses + majorData.about;
         }
 
         public void PrintToFile()
@@ -60,8 +57,8 @@ namespace KioskDatabaseFramework
             {
                 StreamWriter sw = new StreamWriter(fileIOpath, true, Encoding.ASCII);
 
-                foreach (MajorData major in majorsData)
-                    sw.Write(major);
+                foreach (MajorData data in majorsData)
+                    sw.Write(DataToText(data) + "\n");
 
                 sw.Close();
             }

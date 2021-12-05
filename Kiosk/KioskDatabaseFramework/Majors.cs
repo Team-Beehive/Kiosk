@@ -28,12 +28,12 @@ namespace KioskDatabaseFramework
             LinkedList<MajorData> datas = new LinkedList<MajorData>();
             foreach (DocumentSnapshot document in m_dataBaseRefs)
             {
-                Dictionary<string, object> documentDictionary = new Dictionary<string, object>();
+                
                 MajorData tempMajor = new MajorData();
                 tempMajor.MajorName = document.Id;
-                tempMajor.about = documentDictionary["about"] as List<string>;
-                tempMajor.campuses = documentDictionary["campuses"] as List<string>;
-                tempMajor.type = documentDictionary["type"] as List<string>;
+                tempMajor.about = document.GetValue<List<string>>("about");
+                tempMajor.campuses = document.GetValue<List<string>>("campuses");
+                tempMajor.type = document.GetValue<List<string>>("type");
                 datas.AddLast(tempMajor);
             }
             return datas;
