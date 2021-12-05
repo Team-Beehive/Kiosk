@@ -57,7 +57,7 @@ namespace Kiosk.Droid
             this.tcs = tcs;
         }
 
-        public async System.Threading.Tasks.Task OnCompleteAsync(Android.Gms.Tasks.Task task)
+        public void OnComplete(Android.Gms.Tasks.Task task)
         {
             if (task.IsSuccessful)
             {
@@ -87,7 +87,7 @@ namespace Kiosk.Droid
             this.tcs = tcs;
         }
 
-        public void OnCompleteAsync(Android.Gms.Tasks.Task task)
+        public void OnComplete(Android.Gms.Tasks.Task task)
         {
             if (task.IsSuccessful)
             {
