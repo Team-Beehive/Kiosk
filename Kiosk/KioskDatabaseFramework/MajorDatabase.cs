@@ -47,21 +47,18 @@ namespace KioskDatabaseFramework
             return documentSnapshots;
         }
 
-        public string DataToText(MajorData majorData)
-        {
-            return majorData.MajorName + majorData.type + majorData.Classes + majorData.Professors + majorData.campuses + majorData.about;
-        }
-
         public void PrintToFile()
         {
             LinkedList<MajorData> majorsData = majors.GetMajors();
 
             try
             {
-                StreamWriter sw = new StreamWriter(fileIOpath, false, Encoding.ASCII);
+                StreamWriter sw = new StreamWriter(fileIOpath, true, Encoding.ASCII);
 
-                foreach (MajorData data in majorsData)
-                    sw.Write(DataToText(data) + "\n");
+                foreach (MajorData majorData in majorsData)
+                {
+                    sw.WriteLine(majorData.MajorName + majorData.type + majorData.Classes + majorData.Professors + majorData.campuses + majorData.about);
+                }
 
                 sw.Close();
             }
