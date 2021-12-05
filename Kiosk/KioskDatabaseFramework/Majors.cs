@@ -23,7 +23,7 @@ namespace KioskDatabaseFramework
             m_dataBaseRefs = data;
         }
 
-        public LinkedList<MajorData> GetMajors()
+        public LinkedList<MajorData> SetMajorData()
         {
             LinkedList<MajorData> datas = new LinkedList<MajorData>();
             foreach (DocumentSnapshot document in m_dataBaseRefs)
@@ -34,6 +34,8 @@ namespace KioskDatabaseFramework
                 tempMajor.about = document.GetValue<List<string>>("about");
                 tempMajor.campuses = document.GetValue<List<string>>("campuses");
                 tempMajor.type = document.GetValue<List<string>>("type");
+                //tempMajor.classes = document.GetValue<List<string>>("classes");
+                //tempMajor.professors = document.GetValue<List<string>>("professors");
                 datas.AddLast(tempMajor);
             }
             return datas;

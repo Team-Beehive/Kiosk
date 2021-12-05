@@ -8,8 +8,8 @@ namespace KioskDatabaseFramework
     {
             public string MajorName { get; set; }
             public List<string> type { get; set; }
-            public List<string> Classes { get; set; }
-            public List<string> Professors { get; set; }
+            public List<string> classes { get; set; }
+            public List<string> professors { get; set; }
             public List<string> campuses { get; set; }
             public List<string> about { get; set; }
 
