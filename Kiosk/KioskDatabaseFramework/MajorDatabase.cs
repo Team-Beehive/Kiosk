@@ -53,15 +53,19 @@ namespace KioskDatabaseFramework
             string theData = "";
             try
             {
-                StreamWriter sw = new StreamWriter(fileIOpath, true, Encoding.ASCII);
+                StreamWriter sw = new StreamWriter(fileIOpath, false, Encoding.ASCII);
 
                 foreach (MajorData majorData in majorsData)
                 {
-                    theData += majorData.MajorName;
+                    theData += "Major_Name_:::  ";
+                    theData += majorData.MajorName + "\n";
+
+                    theData += "Major_type_:::  ";
                     foreach (string ofWors in majorData.type)
                     {
                         theData += ofWors;
                     }
+                    theData += "\n";
                     /*
                     foreach (string ofWors in majorData.Classes)
                     {
@@ -72,16 +76,22 @@ namespace KioskDatabaseFramework
                         theData.AddLast(ofWors);
                     }
                     */
-                    foreach (string ofWors in majorData.campuses)
-                    {
-                        theData += ofWors;
-                    }
+                    theData += "Major_about_:::  ";
                     foreach (string ofWors in majorData.about)
                     {
                         theData += ofWors;
                     }
+                    theData += "\n";
 
+                    theData += "Major_campuses_:::  ";
+                    foreach (string ofWors in majorData.campuses)
+                    {
+                        theData += ofWors;
+                    }
+
+                    theData += "\n\n\n";
                     sw.WriteLine(theData);
+                    theData = "";
                 }
 
                 sw.Close();
