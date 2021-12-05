@@ -13,16 +13,17 @@ namespace KioskDatabaseFramework
     /// </summary>
     public class MajorDatabase
     {
-        private static FirestoreDb db;
-        Majors majors;
-
         private static string fileIOpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"MajorData.txt";
         public const string project = "oit-kiosk";
+        private static FirestoreDb db;
+        Majors majors;
+        private static LinkedList<DocumentSnapshot> m_documentSnapshots = new LinkedList<DocumentSnapshot>();
 
         public MajorDatabase()
         {
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", "C:\\Users\\zaneo\\Desktop\\School Fall21\\TermProject\\Database\\oit-kiosk-firebase-adminsdk-u24sq-8f7958c50f.json");
-            majors = new Majors(GetMajorData());
+            GetMajorData().Wait();
+            majors = new Majors(m_documentSnapshots);
             PrintToFile();
         }
 
@@ -33,14 +34,16 @@ namespace KioskDatabaseFramework
 
         private static async Task<LinkedList<DocumentSnapshot>> GetMajorData()
         {
+            InitializeProject();
+            LinkedList<DocumentSnapshot> documentSnapshots = new LinkedList<DocumentSnapshot>();
+
             CollectionReference collection = db.Collection("pages").Document("Majors").Collection("Degrees");
             QuerySnapshot snapshot = await collection.GetSnapshotAsync();
-            LinkedList<DocumentSnapshot> documentSnapshots = new LinkedList<DocumentSnapshot>();
-            foreach (DocumentSnapshot document in snapshot.Documents)
-            {
-                documentSnapshots.AddLast(document);
-            }
 
+            foreach (DocumentSnapshot document in snapshot.Documents)
+                documentSnapshots.AddLast(document);
+
+            m_documentSnapshots = documentSnapshots;
             return documentSnapshots;
         }
 
@@ -55,7 +58,7 @@ namespace KioskDatabaseFramework
 
             try
             {
-                StreamWriter sw = new StreamWriter(fileIOpath, true, Encoding.ASCII);
+                StreamWriter sw = new StreamWriter(fileIOpath, false, Encoding.ASCII);
 
                 foreach (MajorData data in majorsData)
                     sw.Write(DataToText(data) + "\n");
