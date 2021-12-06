@@ -6,12 +6,12 @@ namespace KioskDatabaseFramework
 {
     public class MajorData
     {
-            public string MajorName { get; set; }
-            public List<string> type { get; set; }
-            public List<string> classes { get; set; }
-            public List<string> professors { get; set; }
-            public List<string> campuses { get; set; }
-            public List<string> about { get; set; }
+        public string MajorName { get; set; }
+        public LinkedList<DegreeData> relatedCategories;
 
+        public MajorData()
+        {
+            relatedCategories = new LinkedList<DegreeData>();
+        }
     }
 }

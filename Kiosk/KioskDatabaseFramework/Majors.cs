@@ -14,31 +14,56 @@ namespace KioskDatabaseFramework
     public class Majors
     {
         public const string project = "oit-kiosk";
+        private static FirestoreDb db;
+        private static LinkedList<MajorData> m_MajorData = new LinkedList<MajorData>();
 
-        //private MajorDatabase majorDatabase = new MajorDatabase();
-        private LinkedList <DocumentSnapshot> m_dataBaseRefs = new LinkedList<DocumentSnapshot>();
-
-        public Majors(LinkedList<DocumentSnapshot> data)
+        public Majors()
         {
-            m_dataBaseRefs = data;
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", "C:\\Users\\zaneo\\Desktop\\School Fall21\\TermProject\\Database\\oit-kiosk-firebase-adminsdk-u24sq-8f7958c50f.json");
         }
 
-        public LinkedList<MajorData> SetMajorData()
+        private static void InitializeProject()
         {
-            LinkedList<MajorData> datas = new LinkedList<MajorData>();
-            foreach (DocumentSnapshot document in m_dataBaseRefs)
+            db = FirestoreDb.Create(project);
+        }
+
+        private static async Task<LinkedList<MajorData>> GetMajorsDataInternal()
+        {
+            InitializeProject();
+            LinkedList<MajorData> majorData = new LinkedList<MajorData>();
+
+            CollectionReference collection = db.Collection("pages");
+            QuerySnapshot snapshot = await collection.GetSnapshotAsync();
+
+            CollectionReference collection2 = db.Collection("pages").Document("Majors").Collection("Degrees");
+            QuerySnapshot snapshot2 = await collection2.GetSnapshotAsync();
+
+            foreach (DocumentSnapshot document in snapshot.Documents)
             {
-                
-                MajorData tempMajor = new MajorData();
-                tempMajor.MajorName = document.Id;
-                tempMajor.about = document.GetValue<List<string>>("about");
-                tempMajor.campuses = document.GetValue<List<string>>("campuses");
-                tempMajor.type = document.GetValue<List<string>>("type");
-                //tempMajor.classes = document.GetValue<List<string>>("classes");
-                //tempMajor.professors = document.GetValue<List<string>>("professors");
-                datas.AddLast(tempMajor);
+                    MajorData tempMajor = new MajorData();
+                    tempMajor.MajorName = document.Id;
+
+                    foreach (DocumentSnapshot documentb in snapshot2.Documents)
+                    {
+                        DegreeData degreeData = new DegreeData();
+                        degreeData.degreeName = documentb.Id;
+                        degreeData.about = documentb.GetValue<List<string>>("about");
+                        degreeData.campuses = documentb.GetValue<List<string>>("campuses");
+                        degreeData.type = documentb.GetValue<List<string>>("type");
+                        tempMajor.relatedCategories.AddLast(degreeData);
+                    }
+
+                    majorData.AddLast(tempMajor);
             }
-            return datas;
+
+            m_MajorData = majorData;
+            return majorData;
+        }
+
+        public LinkedList<MajorData> GetMajorsData()
+        {
+            GetMajorsDataInternal().Wait();
+            return m_MajorData;
         }
     }
 }

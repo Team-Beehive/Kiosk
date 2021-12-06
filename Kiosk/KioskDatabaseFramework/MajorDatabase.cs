@@ -14,42 +14,22 @@ namespace KioskDatabaseFramework
     public class MajorDatabase
     {
         private static string fileIOpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"MajorData.txt";
-        public const string project = "oit-kiosk";
-        private static FirestoreDb db;
+
         Majors majors;
-        private static LinkedList<DocumentSnapshot> m_documentSnapshots = new LinkedList<DocumentSnapshot>();
+
+
 
         public MajorDatabase()
         {
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", "C:\\Users\\zaneo\\Desktop\\School Fall21\\TermProject\\Database\\oit-kiosk-firebase-adminsdk-u24sq-8f7958c50f.json");
-            GetMajorsData().Wait();
-            majors = new Majors(m_documentSnapshots);
+            majors = new Majors();
             PrintToFile();
         }
 
-        private static void InitializeProject()
-        {
-            db = FirestoreDb.Create(project);
-        }
 
-        private static async Task<LinkedList<DocumentSnapshot>> GetMajorsData()
-        {
-            InitializeProject();
-            LinkedList<DocumentSnapshot> documentSnapshots = new LinkedList<DocumentSnapshot>();
-
-            CollectionReference collection = db.Collection("pages").Document("Majors").Collection("Degrees");
-            QuerySnapshot snapshot = await collection.GetSnapshotAsync();
-
-            foreach (DocumentSnapshot document in snapshot.Documents)
-                documentSnapshots.AddLast(document);
-
-            m_documentSnapshots = documentSnapshots;
-            return documentSnapshots;
-        }
 
         public void PrintToFile()
         {
-            LinkedList<MajorData> majorsData = majors.SetMajorData();
+            LinkedList<MajorData> majorsData = majors.GetMajorsData();
             string theData = "";
             try
             {
@@ -60,33 +40,30 @@ namespace KioskDatabaseFramework
                     theData += "Major_Name_:::  ";
                     theData += majorData.MajorName + "\n";
 
-                    theData += "Major_type_:::  ";
-                    foreach (string ofWors in majorData.type)
+                    foreach (DegreeData degreeData in majorData.relatedCategories)
                     {
-                        theData += ofWors;
-                    }
-                    theData += "\n";
-                    /*
-                    foreach (string ofWors in majorData.Classes)
-                    {
-                        theData.AddLast(ofWors);
-                    }
-                    foreach (string ofWors in majorData.Professors)
-                    {
-                        theData.AddLast(ofWors);
-                    }
-                    */
-                    theData += "Major_about_:::  ";
-                    foreach (string ofWors in majorData.about)
-                    {
-                        theData += ofWors;
-                    }
-                    theData += "\n";
+                        theData += "Degree_Name_:::  ";
+                        theData += degreeData.degreeName + "\n";
 
-                    theData += "Major_campuses_:::  ";
-                    foreach (string ofWors in majorData.campuses)
-                    {
-                        theData += ofWors;
+                        theData += "Degree_type_:::  ";
+                        foreach (string ofWors in degreeData.type)
+                        {
+                            theData += ofWors + " ";
+                        }
+                        theData += "\n";
+                        theData += "Degree_about_:::  ";
+                        foreach (string ofWors in degreeData.about)
+                        {
+                            theData += ofWors + " ";
+                        }
+                        theData += "\n";
+
+                        theData += "Degree_campuses_:::  ";
+                        foreach (string ofWors in degreeData.campuses)
+                        {
+                            theData += ofWors + " ";
+                        }
+                        theData += "\n\n";
                     }
 
                     theData += "\n\n\n";
