@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Kiosk
+namespace Kiosk.Services
 {
     public interface IDisplayInfo
     {

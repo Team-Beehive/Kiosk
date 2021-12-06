@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Google.Cloud.Firestore;
+//using Google.Cloud.Firestore;
 
 
 namespace Kiosk
@@ -24,10 +24,11 @@ namespace Kiosk
         public MajorsListPage()
         {
             
-            CreateCategoryListAsync().Wait();
+            //CreateCategoryListAsync().Wait();
             InitializeComponent();
         }
 
+        /*
         private async Task CreateCategoryListAsync()
         {
             FirestoreDb db = FirestoreDb.Create("oit-kiosk");
@@ -74,6 +75,7 @@ namespace Kiosk
             }
 
         }
+        */
 
         //Button press function to make sure that the button is working as expected or a place holder
         public void ButtonPressTest(object sender, EventArgs e)
@@ -94,7 +96,7 @@ namespace Kiosk
         {
             
             Button btn = (Button)sender;
-            string cat = btn.Text;
+            string cat = btn.ClassId;
             List<string> catList = Default;
             StackLayout addGrid = default;
             Grid grid;

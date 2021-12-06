@@ -4,6 +4,7 @@ using System.Text;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using System.Diagnostics;
+using Kiosk.Services;
 
 namespace Kiosk
 {

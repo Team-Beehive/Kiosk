@@ -63,19 +63,12 @@
     <PackageReference Include="Xamarin.Firebase.Analytics">
       <Version>119.0.1.2</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Firebase.Auth">
-      <Version>121.0.1.3</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.Firebase.Firestore">
-      <Version>123.0.3.2</Version>
-    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2244" />
     <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="28.0.0.3" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DisplayInfo.cs" />
-    <Compile Include="FirebaseConnect.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,6 +77,7 @@
     <AndroidAsset Include="Resources\values\oit-kiosk-firebase-adminsdk-u24sq-8f7958c50f.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AndroidAsset>
+    <GoogleServicesJson Include="google-services.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />

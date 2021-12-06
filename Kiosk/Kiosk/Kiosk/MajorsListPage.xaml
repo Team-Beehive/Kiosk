@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <!--Author: Destin Dahlgren-->
-<!--Temp Image Link: https://mobizent.net/wp-content/uploads/2018/04/Home-Four-Banner-Background-Image.png-->
-<!--Temp Image Link: https://c.pxhere.com/photos/6f/90/frog_pond_water_green_lily_pond_lily_pad_nature_high-596848.jpg!d-->
+<!--Temp Image Link: https://mobizent.net/wp-content/uploads/2018/04/Home-Four-Banner-Background-Image.png -->
+<!--Temp Image Link: https://c.pxhere.com/photos/6f/90/frog_pond_water_green_lily_pond_lily_pad_nature_high-596848.jpg!d -->
     <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Kiosk.MajorsListPage"
