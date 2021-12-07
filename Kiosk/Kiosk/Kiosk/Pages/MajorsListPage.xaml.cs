@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kiosk.Models;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -16,14 +17,21 @@ namespace Kiosk
     {
         //private bool m_open = true;
         //This should be replaced with a getter that will abtain a list of Majors
+        List<Category> _categoryList;
         List<string> TechList = new List<string> { "Data", "Embeded", "Electrical" };
         List<string> BioList = new List<string> { "Dental", "Echocardiography", "Environmental" };
         List<string> MathList = new List<string> { "Accounting", "Applied Mathmatics"};
         List<string> Default = new List<string> { };
         
+        public List<Category> CategoryList
+        {
+            get;
+            set;
+        }
         public MajorsListPage()
         {
-            
+            //TODO: Implement the firestore code to pull the list of categories into the data member
+            //_categoryList = GetCategoriesAsync().Wait();
             //CreateCategoryListAsync().Wait();
             InitializeComponent();
         }
@@ -88,6 +96,7 @@ namespace Kiosk
         {
             //TODO: In order to pass what information is selected the MajdorsPage's constructor could take a string
             //or something to indicate what information to desplay EX: Navigation.PushAsync(new MajorsPage("Data"));
+                    //The text of the sender button should be used for navigation.
             Navigation.PushAsync(new MajorsPage());
         }
 
@@ -96,8 +105,17 @@ namespace Kiosk
         {
             
             Button btn = (Button)sender;
+            //string categorySelected = btn.Text; //This will use the text from the button to determine the correct category
             string cat = btn.ClassId;
             List<string> catList = Default;
+            //foreach (Category category in _categoryList)
+            //{
+            //    if (category.CategoryTitle == cat)
+            //    {
+            //        catList = category.RelatedDegrees;
+            //        break;
+            //    }
+            //}
             StackLayout addGrid = default;
             Grid grid;
 

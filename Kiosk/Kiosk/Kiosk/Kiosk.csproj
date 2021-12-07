@@ -12,10 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="MajorsPage.xaml.cs">
+    <Compile Update="Pages\MajorsPage.xaml.cs">
       <DependentUpon>MajorsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="BuildingsPage.xaml.cs">
+    <Compile Update="Pages\BuildingsPage.xaml.cs">
       <DependentUpon>BuildingsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -24,7 +24,7 @@
     <EmbeddedResource Update="Navigation.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="BuildingsPage.xaml">
+    <EmbeddedResource Update="Pages\BuildingsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Test.xaml">
@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="MajorsListPage.xaml">
+    <EmbeddedResource Update="Pages\MajorsListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

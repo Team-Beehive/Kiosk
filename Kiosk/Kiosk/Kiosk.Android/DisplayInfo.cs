@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using Kiosk.Services;
+using Xamarin.Forms;
 
 [assembly: Dependency(typeof(Kiosk.Droid.DisplayInfo))]
 namespace Kiosk.Droid

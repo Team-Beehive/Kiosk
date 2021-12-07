@@ -22,12 +22,22 @@
 
             <!--Categories-->
 
-            <!--
-            <StackLayout Grid.Row="1" x:Name="TechCat" BackgroundColor="Gray">
-                <Button Text="Technology" ClassId="TECH" Clicked="ButtonPressCategory" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" TextColor="White"/>
-                
-            </StackLayout>
-            -->
+            
+            <!--This is the shell that the category list will use
+                The view cell will need to be formated to achieve result similar to current-->
+            
+            <!--<StackLayout Grid.Row="1" x:Name="Categories" BackgroundColor="Gray">
+                <ListView ItemsSource="CategoryList" BindingContext="CategoryTitle">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>-->
+
             <!--Using two different grids in these categories may not be the most efficent way to hanlde this-->
             <StackLayout Grid.Row="1" x:Name="TechCat" BackgroundColor="Gray">
                 <Grid>
