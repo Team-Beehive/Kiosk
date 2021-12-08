@@ -57,8 +57,15 @@
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
                         <StackLayout>
-                            <local:RelativeImage Source="{Binding Path=Source}" WidthPercent="25"/>
-                            <Label Text="{Binding Path=LabelText}" HorizontalTextAlignment="Center"/>
+                            <RelativeLayout IsClippedToBounds="True" HeightRequest="{Binding Width, Source={RelativeSource Self}}">
+                                <Image Source="frog2.jpg"
+                                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=-0.5}"
+                                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0}"
+                                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=2}"
+                                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" />
+                            </RelativeLayout>
+                            <!--<local:RelativeImage Source="{Binding Path=Source}" WidthPercent="25"/>-->
+                            <local:RFLabel Text="{Binding Path=LabelText}" HorizontalTextAlignment="Center"/>
                         </StackLayout>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
