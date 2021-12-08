@@ -65,21 +65,21 @@
                 First Offered
             </Label>
             <Label FontSize="14">
-                0000
+                1984
             </Label>
             <Label FontSize="16" FontAttributes="Bold">
                 Typical Employers
             </Label>
             <!-- Multiline labels are a bit strange. Using '&#x0a;' makes it multiline like using \n
                     Making it like the other labels leads to some strange tabbing -->
-            <Label FontSize="14" Text="Company A&#x0a;Company B&#x0a;Company C&#x0a;Company D"/>
+            <Label FontSize="14" Text="SpaceX &#10;Expedia &#10;Amazon &#10;Microsoft &#10;Intel Corporation &#10;Garmin"/>
             <Label FontSize="16" FontAttributes="Bold">
                 Expected Credit Hours
             </Label>
             <Label FontSize="14">
-                500 Credit Hours
+                187 Credit Hours
             </Label>
         </StackLayout>
-        <Label FontSize="16" Grid.Row="2" Grid.Column="1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at velit ac dui dictum dignissim eu vitae purus. Donec nec magna in enim volutpat volutpat vel sed elit. Integer hendrerit luctus efficitur. Nullam vitae eros in dui viverra vulputate. Morbi lobortis semper ex in commodo. In aliquam nisi sit amet turpis congue, nec lobortis mauris placerat. Sed lacinia rhoncus aliquam. Sed nunc diam, imperdiet in efficitur non, condimentum bibendum elit. Sed pulvinar tempor augue nec lacinia. Nullam sit amet pharetra diam, vitae blandit dolor. Nulla id hendrerit leo. Maecenas interdum est id lorem egestas dictum.</Label>
+        <Label FontSize="16" Grid.Row="2" Grid.Column="1">Software Engineering Technology is an engineering discipline that deals with all aspects of software production. Students learn to design software systems, write the code that implements those systems, and test systems to make sure they meet requirements. Our graduates are contributing to solutions in medical, industrial, communications, aerospace, business, and scientific fields.</Label>
     </Grid>
 </ContentPage>

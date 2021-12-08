@@ -15,7 +15,7 @@ namespace Kiosk
     {
         //private bool m_open = true;
         //This should be replaced with a getter that will abtain a list of Majors
-        List<string> TechList = new List<string> { "Data", "Embeded", "Electrical" };
+        List<string> TechList = new List<string> { "Software", "Embeded", "Electrical" };
         List<string> BioList = new List<string> { "Dental", "Echocardiography", "Environmental" };
         List<string> MathList = new List<string> { "Accounting", "Applied Mathmatics"};
         List<string> Default = new List<string> { };
