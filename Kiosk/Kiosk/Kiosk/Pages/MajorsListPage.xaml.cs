@@ -1,4 +1,5 @@
-﻿using Kiosk.Models;
+﻿using Google.Cloud.Firestore;
+using Kiosk.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -17,6 +18,7 @@ namespace Kiosk
     {
         //private bool m_open = true;
         //This should be replaced with a getter that will abtain a list of Majors
+        DocumentSnapshot _majors;
         List<Category> _categoryList;
         List<string> TechList = new List<string> { "Data", "Embeded", "Electrical" };
         List<string> BioList = new List<string> { "Dental", "Echocardiography", "Environmental" };
@@ -33,57 +35,33 @@ namespace Kiosk
             //TODO: Implement the firestore code to pull the list of categories into the data member
             //_categoryList = GetCategoriesAsync().Wait();
             //CreateCategoryListAsync().Wait();
+
+            _majors = StoreMajorCategories();
+            GetMajorsDataParsed();
             InitializeComponent();
         }
 
-        /*
-        private async Task CreateCategoryListAsync()
+        private void GetMajorsDataParsed()
+        {
+            _categoryList = _majors.GetValue<List<Category>>("Categories");
+        }
+
+        public DocumentSnapshot StoreMajorCategories()
+        {
+            return Task<DocumentSnapshot>.Run(() => CreateCategoryListAsync()).Result;
+        }
+
+        private async Task<DocumentSnapshot> CreateCategoryListAsync()
         {
             FirestoreDb db = FirestoreDb.Create("oit-kiosk");
             //Get all the pages from database, not ideal but functional
-            CollectionReference usersRef = db.Collection("pages");
-            QuerySnapshot snapshot = await usersRef.GetSnapshotAsync(); //Destiny having trouble here
-            int currentGridRow = 1;
-            foreach (DocumentSnapshot document in snapshot.Documents)
-            {
-                //Find the Majors document
-                if(document.Id == "Majors")
-                {
-                    List<Dictionary<string, string>> categoryList = document.GetValue<List<Dictionary<string, string>>>("Categories");
-                    foreach(Dictionary<string, string> category in categoryList)
-                    {
-                        StackLayout stackLayout = new StackLayout();
-                        Grid grid = new Grid();
-                        grid.RowDefinitions[0].Height = new GridLength(60);
-                        //Insert image code here, Not yet implemented
-                        Image i = new Image { Source = "" };
-                        //Create the button for the drop down
-                        Button button = new Button
-                        {
-                            Text = category["categoryTitle"],
-                            //Add the button event
-                        };
-                        button.Clicked += ButtonPressCategory;
-                        
+            DocumentReference usersRef = db.Collection("pages").Document("Majors");
+            DocumentSnapshot snapshot = await usersRef.GetSnapshotAsync(); //Destiny having trouble here
 
-                        //Place image in the grid
-                        //grid.Children.Add(image);
-
-                        //Place button in the grid
-                        grid.Children.Add(button);
-
-                        //Place the grid in the stacklayout
-                        stackLayout.Children.Add(grid);
-
-                        //Place the stacklayout into the page's grid
-                        MajorsList.Children.Add(stackLayout, currentGridRow, 0);
-                        currentGridRow++;
-                    }
-                }
-            }
+            return snapshot;
 
         }
-        */
+
 
         //Button press function to make sure that the button is working as expected or a place holder
         public void ButtonPressTest(object sender, EventArgs e)
@@ -110,7 +88,7 @@ namespace Kiosk
             List<string> catList = Default;
             //foreach (Category category in _categoryList)
             //{
-            //    if (category.CategoryTitle == cat)
+            //    if (category.CategoryTitle == categorySelected)
             //    {
             //        catList = category.RelatedDegrees;
             //        break;
