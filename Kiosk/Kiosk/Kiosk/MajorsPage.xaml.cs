@@ -16,7 +16,7 @@ namespace Kiosk
     {
         private Timer carouselTimer;
 
-        private const int timerInterval = 10000;
+        private const int timerInterval = 5000;
         public MajorsPage()
         {
             InitializeComponent();

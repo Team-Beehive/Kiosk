@@ -7,9 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiosk.Android", "Kiosk\Kios
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiosk.iOS", "Kiosk\Kiosk.iOS\Kiosk.iOS.csproj", "{0F09169D-36BE-4228-9C22-C5D04F502B38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiosk", "Kiosk\Kiosk\Kiosk.csproj", "{2250BAB8-95F0-4492-A33C-78F22ABB33AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kiosk", "Kiosk\Kiosk\Kiosk.csproj", "{2250BAB8-95F0-4492-A33C-78F22ABB33AB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiosk.WPF", "Kiosk.WPF\Kiosk.WPF.csproj", "{AFD5B763-6BBB-4787-AD44-37398667F6E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KioskDatabaseFramework", "KioskDatabaseFramework\KioskDatabaseFramework.csproj", "{A92A2F29-9A7C-4399-8799-2F45EB662A9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,18 @@ Global
 		{AFD5B763-6BBB-4787-AD44-37398667F6E4}.Release|iPhone.Build.0 = Release|Any CPU
 		{AFD5B763-6BBB-4787-AD44-37398667F6E4}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{AFD5B763-6BBB-4787-AD44-37398667F6E4}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{A92A2F29-9A7C-4399-8799-2F45EB662A9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A92A2F29-9A7C-4399-8799-2F45EB662A9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A92A2F29-9A7C-4399-8799-2F45EB662A9C}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{A92A2F29-9A7C-4399-8799-2F45EB662A9C}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{A92A2F29-9A7C-4399-8799-2F45EB662A9C}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{A92A2F29-9A7C-4399-8799-2F45EB662A9C}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{A92A2F29-9A7C-4399-8799-2F45EB662A9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A92A2F29-9A7C-4399-8799-2F45EB662A9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A92A2F29-9A7C-4399-8799-2F45EB662A9C}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{A92A2F29-9A7C-4399-8799-2F45EB662A9C}.Release|iPhone.Build.0 = Release|Any CPU
+		{A92A2F29-9A7C-4399-8799-2F45EB662A9C}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{A92A2F29-9A7C-4399-8799-2F45EB662A9C}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,9 +8,9 @@
              x:Class="Kiosk.App">
     <Application.Resources>
         <local:Images x:Key="Frogs">
-            <Image Source="frog1.jpg"/>
-            <Image Source="frog2.jpg"/>
-            <Image Source="frog3.jpg"/>
+            <Image Source="cset1.jpg"/>
+            <Image Source="cset2.jpg"/>
+            <Image Source="cset3.jpg"/>
         </local:Images>
 
         <local:LabeledImages x:Key="Buildings">
