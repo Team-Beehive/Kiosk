@@ -4,6 +4,7 @@ using System.Text;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using System.Diagnostics;
+using System.ComponentModel;
 
 namespace Kiosk
 {
@@ -20,18 +21,19 @@ namespace Kiosk
      * https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/text/label
      * https://docs.microsoft.com/en-us/xamarin/android/app-fundamentals/resources-in-android/resources-for-varying-screens#concepts
      */
-    class RFLabel : Label
+    public class RFLabel : Label, INotifyPropertyChanged
     {
-        private double dp;
         public double DP
         {
-            get => dp;
+            get => (double)GetValue(DPProperty);
             set
             {
                 SetFontSize(value);
-                dp = value;
+                SetValue(DPProperty, value);
             }
         }
+
+        private static readonly BindableProperty DPProperty = BindableProperty.CreateAttached("DP", typeof(double), typeof(RFLabel), 1.0);
 
         private void SetFontSize(double dp)
         {
@@ -47,5 +49,14 @@ namespace Kiosk
             }
             
         }
+
+        public new event PropertyChangedEventHandler PropertyChanged;
+        private new void OnPropertyChanged(string info)
+        {
+            base.OnPropertyChanged(info);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
+        }
+
+        
     }
 }

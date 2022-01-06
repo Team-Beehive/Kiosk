@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Kiosk"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Kiosk" x:DataType="local:RFLabel"
              x:Class="Kiosk.BuildingsPage">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
@@ -22,7 +22,7 @@
         <Image Source="placeholder.jpg" Aspect="AspectFill" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"/>
         <Image Source="placeholder.jpg" Aspect="AspectFill" Grid.Row="1" Grid.Column="4"/>
         <Label FontSize="12" HorizontalTextAlignment="Center" VerticalOptions="Center" Grid.Row="2" Grid.ColumnSpan="5">Purvine Hall</Label>
-        
+
         <StackLayout Grid.Row="3" Grid.ColumnSpan="2" BackgroundColor="#003767">
             <StackLayout.Resources>
                 <Style TargetType="Label">
@@ -52,24 +52,17 @@
             </Label>
         </StackLayout>
         <Label Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Text="Text"/>
-        <ScrollView Orientation="Horizontal" Grid.Row="4" Grid.ColumnSpan="5" >
-            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{StaticResource Buildings}">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout>
-                            <RelativeLayout IsClippedToBounds="True" HeightRequest="{Binding Width, Source={RelativeSource Self}}">
-                                <Image Source="frog2.jpg"
-                                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=-0.5}"
-                                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0}"
-                                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=2}"
-                                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" />
-                            </RelativeLayout>
-                            <!--<local:RelativeImage Source="{Binding Path=Source}" WidthPercent="25"/>-->
-                            <local:RFLabel Text="{Binding Path=LabelText}" HorizontalTextAlignment="Center"/>
-                        </StackLayout>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </StackLayout>
+        <ScrollView Orientation="Horizontal" Grid.Row="4" Grid.ColumnSpan="5" VerticalOptions="End" BindableLayout.ItemsSource="{StaticResource Buildings}" BindingContext="{StaticResource The}">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <!--"<local:CroppedImage
+                                Source="{Binding Path=Source, Mode=TwoWay}"/>-->
+                        <!--<local:RelativeImage Source="{Binding Path=Source}" WidthPercent="25"/>-->
+                        <local:RFLabel Text="{Binding Path=Text}" DP="{Binding Path=DP}" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
         </ScrollView>
     </Grid>
 </ContentPage>

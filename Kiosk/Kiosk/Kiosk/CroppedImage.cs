@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;
 using Xamarin.Forms;
 
 namespace Kiosk
 {
-    public class CroppedImage : RelativeLayout
+    public class CroppedImage : RelativeLayout, INotifyPropertyChanged
     {
-        public CroppedImage()
+        public CroppedImage() : base()
         {
             internalImage = new Image();
 
@@ -77,6 +78,8 @@ namespace Kiosk
             {
                 orientation = value;
                 SetCropAspect(cropAspect, Width);
+                OnPropertyChanged("Orientation");
+
             }
         }
 
@@ -88,14 +91,20 @@ namespace Kiosk
             {
                 cropAspect = value;
                 SetCropAspect(value, Width);
+                OnPropertyChanged("CropAspect");
+
             }
         }
 
         private Image internalImage;
-        public ImageSource Source
+        public Xamarin.Forms.ImageSource Source
         {
             get => internalImage.Source;
-            set => internalImage.Source = value;
+            set
+            { 
+                internalImage.Source = value;
+                OnPropertyChanged("Source");
+            }
         }
 
         private double imageX;
@@ -110,6 +119,8 @@ namespace Kiosk
             {
                 imageX = value;
                 ConstraintChanged();
+                OnPropertyChanged("ImageConstraintX");
+
             }
         }
 
@@ -120,6 +131,8 @@ namespace Kiosk
             {
                 imageY = value;
                 ConstraintChanged();
+                OnPropertyChanged("ImageConstraintY");
+
             }
         }
 
@@ -130,6 +143,7 @@ namespace Kiosk
             {
                 scaleX = value;
                 ConstraintChanged();
+                OnPropertyChanged("ImageScaleX");
             }
         }
 
@@ -140,13 +154,15 @@ namespace Kiosk
             {
                 scaleY = value;
                 ConstraintChanged();
+                OnPropertyChanged("ImageScaleY");
+
             }
         }
 
         private void ConstraintChanged()
         {
             // I can't seem to find a way to change this other than removing the whole image
-            Children.Remove(internalImage);
+            _ = Children.Remove(internalImage);
             Children.Add(internalImage,
                 // These constraints are in the correct but arbitrary order
                 // XConstraint
@@ -196,5 +212,13 @@ namespace Kiosk
             }
 
         }
+
+        public new event PropertyChangedEventHandler PropertyChanged;
+        private new void OnPropertyChanged(string info)
+        {
+            base.OnPropertyChanged(info);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
+        }
+
     }
 }

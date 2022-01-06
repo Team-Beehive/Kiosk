@@ -6,7 +6,9 @@ using Xamarin.Forms;
 
 namespace Kiosk
 {
-    public class Images : ObservableCollection<Image>
+    public class RFLabelCollection : ObservableCollection<RFLabel>
+    { }
+    public class ImageCollection : ObservableCollection<Image>
     { }
 
     public class LabeledImage
@@ -15,6 +17,17 @@ namespace Kiosk
         public string LabelText { get; set; }
     }
 
-    public class LabeledImages : ObservableCollection<LabeledImage>
+    public class LabeledImageCollection : ObservableCollection<LabeledImage>
+    { }
+
+    public class LabeledCroppedImage : CroppedImage
+    {
+        public string LabelText { get; set; }
+    }
+
+    public class LabeledCroppedImageCollection : ObservableCollection<LabeledCroppedImage>
+    { }
+
+    public class CroppedImageCollection : ObservableCollection<CroppedImage>
     { }
 }

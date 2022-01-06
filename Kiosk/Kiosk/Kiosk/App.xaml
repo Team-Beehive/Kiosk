@@ -7,23 +7,81 @@
              mc:Ignorable="d"
              x:Class="Kiosk.App">
     <Application.Resources>
-        <local:Images x:Key="Frogs">
+        <local:ImageCollection x:Key="Frogs">
             <Image Source="cset1.jpg"/>
             <Image Source="cset2.jpg"/>
             <Image Source="cset3.jpg"/>
-        </local:Images>
+        </local:ImageCollection>
 
-        <local:LabeledImages x:Key="Buildings">
-            <local:LabeledImage Source="frog1.jpg" LabelText="Frog 1"/>
-            <local:LabeledImage Source="frog2.jpg" LabelText="Frog 2"/>
-            <local:LabeledImage Source="frog3.jpg" LabelText="Frog 3"/>
-            <local:LabeledImage Source="frog1.jpg" LabelText="Frog 4"/>
-            <local:LabeledImage Source="frog2.jpg" LabelText="Frog 5"/>
-            <local:LabeledImage Source="frog3.jpg" LabelText="Frog 6"/>
-        </local:LabeledImages>
+        <local:LabeledCroppedImageCollection x:Key="Buildings">
+            <local:LabeledCroppedImage 
+                Source="frog1.jpg"    
+                LabelText="Frog 1" 
+                CropAspect="Square"
+                Orientation="Horizontal"
+                ImageConstraintX="-0.5"
+                ImageConstraintY="0"  
+                ImageScaleX="2"
+                ImageScaleY="1"
+                />
+            <local:LabeledCroppedImage 
+                Source="frog2.jpg"
+                LabelText="Frog 2"
+                CropAspect="Square"
+                Orientation="Horizontal"
+                ImageConstraintX="-0.5"
+                ImageConstraintY="0"
+                ImageScaleX="2"
+                ImageScaleY="1"
+                />
+            <local:LabeledCroppedImage 
+                Source="frog3.jpg" 
+                LabelText="Frog 3"
+                CropAspect="Square"
+                Orientation="Horizontal"
+                ImageConstraintX="-0.5"
+                ImageConstraintY="0"
+                ImageScaleX="2"
+                ImageScaleY="1"
+                />
+            <local:LabeledCroppedImage 
+                Source="frog1.jpg" 
+                LabelText="Frog 4"
+                CropAspect="Square"
+                Orientation="Horizontal"
+                ImageConstraintX="-0.5"
+                ImageConstraintY="0"
+                ImageScaleX="2"
+                ImageScaleY="1"
+                />
+            <local:LabeledCroppedImage 
+                Source="frog2.jpg" 
+                LabelText="Frog 5"
+                CropAspect="Square"
+                Orientation="Horizontal"
+                ImageConstraintX="-0.5"
+                ImageConstraintY="0"
+                ImageScaleX="2"
+                ImageScaleY="1"
+                />
+            <local:LabeledCroppedImage 
+                Source="frog3.jpg" 
+                LabelText="Frog 6"
+                CropAspect="Square"
+                Orientation="Horizontal"
+                ImageConstraintX="-0.5"
+                ImageConstraintY="0"
+                ImageScaleX="2"
+                ImageScaleY="1"
+                />
+        </local:LabeledCroppedImageCollection>
 
-        <local:Images x:Key="Banner">
+        <local:RFLabelCollection x:Key="The">
+            <local:RFLabel DP="10" Text="Hi"/>
+        </local:RFLabelCollection>
+
+        <local:ImageCollection x:Key="Banner">
             <Image Source="temp_math.jpg"/>
-        </local:Images>
+        </local:ImageCollection>
     </Application.Resources>
 </Application>

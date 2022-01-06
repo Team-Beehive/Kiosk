@@ -43,8 +43,8 @@ namespace Kiosk
         private void CarouselMove(object sender, EventArgs e)
         {
             MajorsCarousel.Position = sender.Equals(R) || sender.Equals(carouselTimer)
-                ? Mod(MajorsCarousel.Position + 1, ((Images)MajorsCarousel.ItemsSource).Count)
-                : Mod(MajorsCarousel.Position - 1, ((Images)MajorsCarousel.ItemsSource).Count);
+                ? Mod(MajorsCarousel.Position + 1, ((ImageCollection)MajorsCarousel.ItemsSource).Count)
+                : Mod(MajorsCarousel.Position - 1, ((ImageCollection)MajorsCarousel.ItemsSource).Count);
 
 
             // These lines reset the timer so that it doesn't switch right after the user does
