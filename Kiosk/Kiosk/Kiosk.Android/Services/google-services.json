@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "622074473491",
+    "project_id": "oit-kiosk",
+    "storage_bucket": "oit-kiosk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622074473491:android:4988c09d0bd31c9bf963e6",
+        "android_client_info": {
+          "package_name": "com.beehive.kiosk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "622074473491-c8phhq4qklhebquea3virqlpvcrkst6i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqiau91_JLJ2hrB-rZSOcEok3iup7Kp4Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "622074473491-c8phhq4qklhebquea3virqlpvcrkst6i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

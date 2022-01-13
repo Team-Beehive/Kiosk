@@ -12,9 +12,12 @@ namespace Kiosk
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Navigation : TabbedPage
     {
+
         public Navigation()
         {
             InitializeComponent();
+            
         }
     }
 }
+
