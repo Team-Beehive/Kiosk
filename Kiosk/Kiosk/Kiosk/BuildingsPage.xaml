@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Kiosk"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Kiosk"
              x:Class="Kiosk.BuildingsPage">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -8,7 +9,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
@@ -51,24 +52,62 @@
                 500 Credit Hours
             </Label>
         </StackLayout>
-        <Label Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Text="Text"/>
+        <Label Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" Text="Text"/>
         <ScrollView Orientation="Horizontal" Grid.Row="4" Grid.ColumnSpan="5" >
-            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{StaticResource Buildings}">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout>
-                            <RelativeLayout IsClippedToBounds="True" HeightRequest="{Binding Width, Source={RelativeSource Self}}">
-                                <Image Source="frog2.jpg"
-                                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=-0.5}"
-                                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0}"
-                                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=2}"
-                                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" />
-                            </RelativeLayout>
-                            <!--<local:RelativeImage Source="{Binding Path=Source}" WidthPercent="25"/>-->
-                            <local:RFLabel Text="{Binding Path=LabelText}" HorizontalTextAlignment="Center"/>
-                        </StackLayout>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
+            <StackLayout Orientation="Horizontal">
+                <StackLayout>
+                    <StackLayout.Resources>
+                        <Style TargetType="local:CroppedImage">
+                            <Setter Property="HorizontalOptions" Value="Fill"/>
+                        </Style>
+                    </StackLayout.Resources>
+                    <local:CroppedImage
+                        Source="frog1.jpg"
+                        CropAspect="Square"
+	                    Orientation="Horizontal"
+	                    ImageConstraintX="-0.5"
+	                    ImageConstraintY="0"
+                        ImageScaleX="2"
+	                    ImageScaleY="1"
+	                    />
+                    <Label Text="Frog 1" />
+                </StackLayout>
+                <StackLayout>
+                    <local:CroppedImage
+                        Source="frog2.jpg"
+                        CropAspect="Square"
+	                    Orientation="Horizontal"
+	                    ImageConstraintX="-0.5"
+	                    ImageConstraintY="0"
+                        ImageScaleX="2"
+	                    ImageScaleY="1"
+	                    />
+                    <Label Text="Frog 2" />
+                </StackLayout>
+                <StackLayout>
+                    <local:CroppedImage
+                        Source="frog3.jpg"
+                        CropAspect="Square"
+	                    Orientation="Horizontal"
+	                    ImageConstraintX="-0.5"
+	                    ImageConstraintY="0"
+                        ImageScaleX="2"
+	                    ImageScaleY="1"
+	                    />
+                    <Label Text="Frog 3" />
+                </StackLayout>
+                <StackLayout>
+                    <local:CroppedImage
+                        Source="frog1.jpg"
+                        CropAspect="Square"
+	                    Orientation="Horizontal"
+	                    ImageConstraintX="-0.5"
+	                    ImageConstraintY="0"
+                        ImageScaleX="2"
+	                    ImageScaleY="1"
+	                    />
+                    <Label Text="Frog 1"/>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </Grid>

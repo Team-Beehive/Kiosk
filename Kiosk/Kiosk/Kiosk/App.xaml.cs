@@ -10,7 +10,7 @@ namespace Kiosk
         {
             InitializeComponent();
 
-            MainPage = new Test();
+            MainPage = new BuildingsPage();
             //MainPage = new NavigationPage(new MajorsListPage());
         }
 

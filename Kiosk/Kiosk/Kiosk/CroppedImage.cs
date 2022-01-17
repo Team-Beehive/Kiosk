@@ -174,12 +174,12 @@ namespace Kiosk
         protected override void OnSizeAllocated(double width, double height)
         {
             base.OnSizeAllocated(width, height);
-            SetCropAspect(cropAspect, width);
+            if (height != this.Height || width != this.Width)
+                SetCropAspect(cropAspect, width);
         }
 
         private void SetCropAspect(S ratio, double width)
         {
-
             double ratioInDouble = doubleRatio[(int)ratio];
 
             switch (orientation)
@@ -194,7 +194,6 @@ namespace Kiosk
                     Debug.WriteLine("This isn't supposed to happen");
                     break;
             }
-
         }
     }
 }
