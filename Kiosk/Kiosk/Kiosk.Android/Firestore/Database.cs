@@ -10,22 +10,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.IO;
+using Xamarin.Essentials;
+using System.Threading.Tasks;
 
 namespace Kiosk.Droid
 {
 
     public class Database
     {
-    private static LinkedList<MajorData> m_MajorData = new LinkedList<MajorData>();
-
+        private static LinkedList<MajorData> m_MajorData = new LinkedList<MajorData>();
+        string fileName = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "data.txt");
         public Database()
         {
-            GetData();
+            m_MajorData = GetData();
+            PrintData();
+            //ReadAllData();
         }
-
-        //Go through everything in the database and set it to some varaible
-        async void GetData()
+        
+        private static async Task<LinkedList<MajorData>> GetDataTask()
         {
             var collection1 = await CrossCloudFirestore.Current
                                             .Instance
@@ -59,10 +62,65 @@ namespace Kiosk.Droid
                 majorData.AddLast(tempMajor);
             }
 
-            m_MajorData = majorData;
+            return majorData;
         }
 
+        public LinkedList<MajorData> GetData()
+        {
+            LinkedList<MajorData> tempData = Task<LinkedList<MajorData>>.Run(() => GetDataTask()).Result;
+            return tempData;
+        }
+
+
+        public void PrintData()
+        {
+            string theData = "";
+            foreach (MajorData majorData in m_MajorData)
+            {
+                theData += "Major_Name_:::  ";
+                theData += majorData.MajorName + "\n";
+
+                foreach (DegreeData degreeData in majorData.relatedCategories)
+                {
+                    theData += "Degree_Name_:::  ";
+                    theData += degreeData.degreeName + "\n";
+
+                    theData += "Degree_type_:::  ";
+                    foreach (string ofWors in degreeData.type)
+                    {
+                        theData += ofWors + " ";
+                    }
+                    theData += "\n";
+                    theData += "Degree_about_:::  ";
+                    foreach (string ofWors in degreeData.about)
+                    {
+                        theData += ofWors + " ";
+                    }
+                    theData += "\n";
+
+                    theData += "Degree_campuses_:::  ";
+                    foreach (string ofWors in degreeData.campuses)
+                    {
+                        theData += ofWors + " ";
+                    }
+                    theData += "\n\n";
+                }
+
+                theData += "\n\n\n";
+                File.WriteAllText("data.txt", theData);
+                theData = "";
+            }
+        }
+
+        public void ReadAllData()
+        {
+            if (File.Exists(fileName))
+            {
+                string datastring =  File.ReadAllText(fileName);
+            }
+            else
+                Console.WriteLine("Lug of nuts the file be broke");
+        }
+       
     }
-
-
 }
