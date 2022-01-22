@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Kiosk"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Kiosk"
              x:Class="Kiosk.BuildingsPage">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -8,20 +9,26 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="5*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <Image Source="placeholder.jpg" Aspect="AspectFill" Grid.ColumnSpan="5"/>
+        <local:CroppedImage Source="purvine1.jpg" Grid.ColumnSpan="5"
+                            ImageScaleY="1.7"
+                            ImageConstraintY="-0.6"/>
         <Image Source="placeholder.jpg" Aspect="AspectFill" Grid.Row="1"/>
-        <Image Source="placeholder.jpg" Aspect="AspectFill" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"/>
-        <Image Source="placeholder.jpg" Aspect="AspectFill" Grid.Row="1" Grid.Column="4"/>
-        <Label FontSize="12" HorizontalTextAlignment="Center" VerticalOptions="Center" Grid.Row="2" Grid.ColumnSpan="5">Purvine Hall</Label>
+        <local:CroppedImage Source="purvine3.jpg" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"
+                            ImageScaleY="3"
+                            ImageScaleX="1.18"
+                            ImageConstraintY="-1"
+                            ImageConstraintX="-0.1"/>
+        <Image Source="purvine4.png" Aspect="AspectFill" Grid.Row="1" Grid.Column="4"/>
+        <Label FontSize="38" HorizontalTextAlignment="Center" VerticalOptions="Center" Grid.Row="2" Grid.ColumnSpan="5">Purvine Hall</Label>
         
         <StackLayout Grid.Row="3" Grid.ColumnSpan="2" BackgroundColor="#003767">
             <StackLayout.Resources>
@@ -29,40 +36,72 @@
                     <Setter Property="TextColor" Value="White"/>
                 </Style>
             </StackLayout.Resources>
-            <Label FontSize="10" FontAttributes="Bold">
+            <Label FontSize="20" FontAttributes="Bold">
                 Quick Facts
             </Label>
-            <Label FontSize="8" FontAttributes="Bold">
-                First Offered
+            <Label FontSize="16" FontAttributes="Bold">
+                Built
             </Label>
-            <Label FontSize="7">
+            <Label FontSize="12">
                 0000
             </Label>
-            <Label FontSize="8" FontAttributes="Bold">
-                Typical Employers
+            <Label FontSize="16" FontAttributes="Bold">
+                Primary Majors
             </Label>
             <!-- Multiline labels are a bit strange. Using '&#x0a;' makes it multiline like using \n
                     Making it like the other labels leads to some strange tabbing -->
-            <Label FontSize="7" Text="Company A&#x0a;Company B&#x0a;Company C&#x0a;Company D"/>
-            <Label FontSize="8" FontAttributes="Bold">
-                Expected Credit Hours
-            </Label>
-            <Label FontSize="7">
-                500 Credit Hours
-            </Label>
+            <Label FontSize="12" Text="Software&#x0a;Embedded&#x0a;Electrical"/>
         </StackLayout>
-        <Label Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Text="Text"/>
-        <ScrollView Orientation="Horizontal" Grid.Row="4" Grid.ColumnSpan="5" >
-            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{StaticResource Buildings}">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout>
-                            <local:RelativeImage Source="{Binding Path=Source}" WidthPercent="25"/>
-                            <Label Text="{Binding Path=LabelText}" HorizontalTextAlignment="Center"/>
-                        </StackLayout>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </StackLayout>
-        </ScrollView>
+        <Label Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
+            Purvine hall is the center of many majors, being built in 
+        </Label>
+        <!--<ScrollView Orientation="Horizontal" Grid.Row="4" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand">-->
+
+            <Grid Grid.Row="4" Grid.ColumnSpan="5">
+                <Grid.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="Grid.Row" Value="1"/>
+                        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                    <Setter Property="FontSize" Value="13"/>
+                </Style>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                    <local:CroppedImage
+                        Source="ceet1.jpg"
+                        ImageScaleY="1"
+                        ImageScaleX="3"
+                        ImageConstraintX="-0.8"
+	                    />
+                <Label Text="CEET"/>
+                <local:CroppedImage
+                    Grid.Column="1"
+                    Source="cu1.jpg"
+                    ImageScaleY="1"
+                    ImageScaleX="3"
+                    ImageConstraintX="-0.8"
+	                />
+                <Label Text="College Union" Grid.Column="1"/>
+                <local:CroppedImage
+                    Grid.Column="2"
+                        Source="dow1.jpg"
+                    ImageScaleX="3"
+                    ImageScaleY="1.2"
+                    ImageConstraintX="-1"
+	                    />
+                <Label Text="Dow" Grid.Column="2"/>
+                    <local:CroppedImage
+                        Grid.Column="3"
+                        Source="snell1.jpg"
+                        ImageScaleX="3"
+                        ImageScaleY="1"
+                        ImageConstraintY="0"
+                        ImageConstraintX="-1.2"
+	                    />
+                <Label Text="Snell" Grid.Column="3"/>
+            </Grid>
+        <!--</ScrollView>-->
     </Grid>
 </ContentPage>
