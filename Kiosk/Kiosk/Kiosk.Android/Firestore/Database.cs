@@ -23,7 +23,7 @@ namespace Kiosk.Droid
         string fileName = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "data.txt");
         public Database()
         {
-            m_MajorData = GetData();
+            GetData();
             PrintData();
             //ReadAllData();
         }
@@ -65,10 +65,9 @@ namespace Kiosk.Droid
             return majorData;
         }
 
-        public LinkedList<MajorData> GetData()
+        public async void GetData()
         {
-            LinkedList<MajorData> tempData = Task<LinkedList<MajorData>>.Run(() => GetDataTask()).Result;
-            return tempData;
+            m_MajorData = (await Task<LinkedList<MajorData>>.Run(() => GetDataTask()));
         }
 
 
