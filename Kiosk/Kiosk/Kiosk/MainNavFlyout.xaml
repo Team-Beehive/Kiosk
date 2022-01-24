@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Kiosk"
+             x:Class="Kiosk.MainNavFlyout"
+             Title="Flyout"
+             IconImageSource="hamburger.png">
+    <StackLayout>
+        <ListView x:Name="MenuItemsListView" x:FieldModifier="public">
+            <ListView.ItemsSource>
+                <x:Array Type="{x:Type local:MainNavFlyoutMenuItem}">
+                    <local:MainNavFlyoutMenuItem Title="Buildings" TargetType="{x:Type local:BuildingsPage}" />
+                    <local:MainNavFlyoutMenuItem Title="Majors" TargetType="{x:Type local:MajorsListPage}" />
+                </x:Array>
+            </ListView.ItemsSource>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="5,10">
+                            <Grid.ColumnDefinitions>
+                                <!--<ColumnDefinition Width="30"/>-->
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <!--<Image Source="{Binding IconSource}" />-->
+                            <Label Grid.Column="0" Text="{Binding Title}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
