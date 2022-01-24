@@ -17,4 +17,6 @@ namespace Kiosk
 
     public class LabeledImages : ObservableCollection<LabeledImage>
     { }
+
+
 }

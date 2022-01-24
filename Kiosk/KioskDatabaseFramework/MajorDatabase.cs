@@ -17,15 +17,11 @@ namespace KioskDatabaseFramework
 
         Majors majors;
 
-
-
         public MajorDatabase()
         {
             majors = new Majors();
             PrintToFile();
         }
-
-
 
         public void PrintToFile()
         {

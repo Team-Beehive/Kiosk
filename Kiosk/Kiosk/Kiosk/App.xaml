@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+    
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -6,7 +7,10 @@
              xmlns:local="clr-namespace:Kiosk"
              mc:Ignorable="d"
              x:Class="Kiosk.App">
+
+
     <Application.Resources>
+
         <local:Images x:Key="Frogs">
             <Image Source="cset1.jpg"/>
             <Image Source="cset2.jpg"/>

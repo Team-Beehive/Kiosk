@@ -13,18 +13,17 @@ namespace KioskDatabaseFramework
     /// </summary>
     public class Majors
     {
-        public const string project = "oit-kiosk";
         private static FirestoreDb db;
         private static LinkedList<MajorData> m_MajorData = new LinkedList<MajorData>();
 
         public Majors()
         {
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", "C:\\Users\\zaneo\\Desktop\\School Fall21\\TermProject\\Database\\oit-kiosk-firebase-adminsdk-u24sq-8f7958c50f.json");
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", "C:\\Users\\zaneo\\Desktop\\Desktop Stuff\\School\\School Fall21\\TermProject\\Database\\oit-kiosk-firebase-adminsdk-u24sq-8f7958c50f.json");
         }
 
         private static void InitializeProject()
         {
-            db = FirestoreDb.Create(project);
+            db = FirestoreDb.Create("oit-kiosk");
         }
 
         private static async Task<LinkedList<MajorData>> GetMajorsDataInternal()
