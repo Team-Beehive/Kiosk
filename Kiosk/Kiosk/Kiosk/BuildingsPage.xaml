@@ -29,7 +29,7 @@
                             ImageConstraintX="-0.1"/>
         <Image Source="purvine4.png" Aspect="AspectFill" Grid.Row="1" Grid.Column="4"/>
         <Label FontSize="38" HorizontalTextAlignment="Center" VerticalOptions="Center" Grid.Row="2" Grid.ColumnSpan="5">Purvine Hall</Label>
-        
+
         <StackLayout Grid.Row="3" Grid.ColumnSpan="2" BackgroundColor="#003767">
             <StackLayout.Resources>
                 <Style TargetType="Label">
@@ -53,46 +53,46 @@
             <Label FontSize="12" Text="Software&#x0a;Embedded&#x0a;Electrical"/>
         </StackLayout>
         <Label Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
-            Purvine hall is the center of many majors, being built in 
+            Purvine hall is the center of many majors, being built in
         </Label>
         <!--<ScrollView Orientation="Horizontal" Grid.Row="4" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand">-->
 
-            <Grid Grid.Row="4" Grid.ColumnSpan="5">
-                <Grid.Resources>
-                    <Style TargetType="Label">
-                        <Setter Property="Grid.Row" Value="1"/>
-                        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Grid Grid.Row="4" Grid.ColumnSpan="5">
+            <Grid.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="Grid.Row" Value="1"/>
+                    <Setter Property="HorizontalTextAlignment" Value="Center"/>
                     <Setter Property="FontSize" Value="13"/>
                 </Style>
-                </Grid.Resources>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                    <local:CroppedImage
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <local:CroppedImage
                         Source="ceet1.jpg"
                         ImageScaleY="1"
                         ImageScaleX="3"
                         ImageConstraintX="-0.8"
 	                    />
-                <Label Text="CEET"/>
-                <local:CroppedImage
+            <Label Text="CEET"/>
+            <local:CroppedImage
                     Grid.Column="1"
                     Source="cu1.jpg"
                     ImageScaleY="1"
                     ImageScaleX="3"
                     ImageConstraintX="-0.8"
 	                />
-                <Label Text="College Union" Grid.Column="1"/>
-                <local:CroppedImage
+            <Label Text="College Union" Grid.Column="1"/>
+            <local:CroppedImage
                     Grid.Column="2"
                         Source="dow1.jpg"
                     ImageScaleX="3"
                     ImageScaleY="1.2"
                     ImageConstraintX="-1"
 	                    />
-                <Label Text="Dow" Grid.Column="2"/>
-                    <local:CroppedImage
+            <Label Text="Dow" Grid.Column="2"/>
+            <local:CroppedImage
                         Grid.Column="3"
                         Source="snell1.jpg"
                         ImageScaleX="3"
@@ -100,8 +100,8 @@
                         ImageConstraintY="0"
                         ImageConstraintX="-1.2"
 	                    />
-                <Label Text="Snell" Grid.Column="3"/>
-            </Grid>
+            <Label Text="Snell" Grid.Column="3"/>
+        </Grid>
         <!--</ScrollView>-->
     </Grid>
 </ContentPage>

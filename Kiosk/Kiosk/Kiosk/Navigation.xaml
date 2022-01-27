@@ -5,7 +5,6 @@
             x:Class="Kiosk.Navigation">
   <!--Pages can be added as references or inline-->
 <!-- This is not the final version. This is only so I can switch easily between pages I've made. -->
-    <local:Test/>
-    <local:BuildingsPage Title="Buildings In-Depth"/>
-    <local:MajorsPage Title="Majors In-Depth"/>
+    <local:BuildingsPage Title="Buildings"/>
+    <local:MajorsListPage Title="Majors"/>
 </TabbedPage>

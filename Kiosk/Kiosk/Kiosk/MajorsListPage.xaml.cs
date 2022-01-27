@@ -17,7 +17,7 @@ namespace Kiosk
         //This should be replaced with a getter that will abtain a list of Majors
         List<string> TechList = new List<string> { "Software", "Embeded", "Electrical" };
         List<string> BioList = new List<string> { "Dental", "Echocardiography", "Environmental" };
-        List<string> MathList = new List<string> { "Accounting", "Applied Mathmatics"};
+        List<string> MathList = new List<string> { "Accounting", "Applied Mathmatics" };
         List<string> Default = new List<string> { };
 
         public MajorsListPage()
@@ -42,7 +42,7 @@ namespace Kiosk
         //This function is responsible for displaying the program options in a given category
         public void ButtonPressCategory(object sender, EventArgs e)
         {
-            
+
             Button btn = (Button)sender;
             string cat = btn.ClassId;
             List<string> catList = Default;
@@ -125,17 +125,17 @@ namespace Kiosk
             if (TechCat.Children.Count > 1)
             {
                 TechCat.Children.RemoveAt(1);
-            
+
             }
             if (BioCat.Children.Count > 1)
             {
                 BioCat.Children.RemoveAt(1);
-            
+
             }
             if (MathCat.Children.Count > 1)
             {
                 MathCat.Children.RemoveAt(1);
-            
+
             }
         }
 

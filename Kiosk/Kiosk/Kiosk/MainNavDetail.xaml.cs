@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Kiosk
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BuildingsPage : ContentPage
+    public partial class MainNavDetail : ContentPage
     {
-        public BuildingsPage()
+        public MainNavDetail()
         {
             InitializeComponent();
         }
