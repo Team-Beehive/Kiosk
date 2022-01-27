@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Kiosk"
+             x:Class="Kiosk.Professors">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <local:CroppedImage
+            Source="frog2.jpg"
+            CropAspect="Square"
+            ImageScaleY="1"
+            ImageScaleX="2"
+            ImageConstraintX="-0.55"
+            />
+
+        <StackLayout BackgroundColor="#003767" Grid.Row="1">
+            <StackLayout.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="TextColor" Value="White"/>
+                </Style>
+            </StackLayout.Resources>
+
+            <Label FontSize="18">Department</Label>
+            <Label FontSize="16">AAAA</Label>
+            <Label FontSize="18">Email</Label>
+            <Label FontSize="16">aaa@aaa.com</Label>
+            <Label FontSize="18">Office</Label>
+            <Label FontSize="16">AA000</Label>
+            <Label FontSize="18">Phone Number</Label>
+            <Label FontSize="16">(AAA) AAA - AAAA</Label>
+        </StackLayout>
+        <RelativeLayout Grid.Column="1"
+                     Grid.RowSpan="2"
+                     HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <Label
+            FontSize="100"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
+            LineBreakMode="WordWrap"
+                Rotation="-90"
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Width}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Height}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Factor=1, Property=Height}"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Factor=1, Property=Width}"
+            >
+                AAAAAA
+            </Label>
+
+        </RelativeLayout>
+        
+    </Grid>
+</ContentPage>

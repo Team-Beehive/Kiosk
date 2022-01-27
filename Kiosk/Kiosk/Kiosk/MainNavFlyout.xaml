@@ -11,6 +11,7 @@
                 <x:Array Type="{x:Type local:MainNavFlyoutMenuItem}">
                     <local:MainNavFlyoutMenuItem Title="Buildings" TargetType="{x:Type local:BuildingsPage}" />
                     <local:MainNavFlyoutMenuItem Title="Majors" TargetType="{x:Type local:MajorsListPage}" />
+                    <local:MainNavFlyoutMenuItem Title="Professor" TargetType="{x:Type local:Professors}"/>
                 </x:Array>
             </ListView.ItemsSource>
             <ListView.ItemTemplate>
