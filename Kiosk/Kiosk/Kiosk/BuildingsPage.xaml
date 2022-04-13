@@ -21,7 +21,7 @@
         <local:CroppedImage Source="purvine1.jpg" Grid.ColumnSpan="5"
                             ImageScaleY="1.7"
                             ImageConstraintY="-0.6"/>
-        <Image Source="placeholder.jpg" Aspect="AspectFill" Grid.Row="1"/>
+        <Image Source="purvine2.jpg" Aspect="AspectFill" Grid.Row="1"/>
         <local:CroppedImage Source="purvine3.jpg" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"
                             ImageScaleY="3"
                             ImageScaleX="1.18"
